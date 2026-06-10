@@ -1,0 +1,4 @@
+An alien civilization uses unfamiliar units. Known conversions:
+{examples}
+Convert the following quantity into blims. Give your answer rounded to 2 decimal places.
+{query}

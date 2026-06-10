@@ -1,0 +1,4 @@
+A hidden rule transforms 8-bit binary strings. Here are some examples:
+{examples}
+Apply the same rule to the following input and give the resulting binary string.
+{query}

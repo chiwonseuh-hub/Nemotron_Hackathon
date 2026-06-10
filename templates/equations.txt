@@ -1,0 +1,4 @@
+Symbols have been substituted for digits and operators in these equations:
+{examples}
+Using the same substitution, evaluate:
+{query}

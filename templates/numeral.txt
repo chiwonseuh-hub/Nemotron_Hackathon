@@ -1,0 +1,4 @@
+An ancient numeral system writes numbers with unfamiliar symbols. Examples:
+{examples}
+Write the following number in this numeral system:
+{query}

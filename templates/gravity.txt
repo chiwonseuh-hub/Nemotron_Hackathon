@@ -1,0 +1,4 @@
+On a distant planet, objects fall according to d = 0.5 * g * t^2, but gravity g differs from Earth. Observations:
+{examples}
+How far does an object fall in the following time? Give your answer rounded to 2 decimal places.
+{query}

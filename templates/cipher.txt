@@ -1,0 +1,4 @@
+A substitution cipher replaces each letter with another. Decoded examples:
+{examples}
+Decode the following message:
+{query}
