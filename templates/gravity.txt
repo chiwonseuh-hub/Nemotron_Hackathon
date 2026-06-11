@@ -1,4 +1,3 @@
-On a distant planet, objects fall according to d = 0.5 * g * t^2, but gravity g differs from Earth. Observations:
+In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
 {examples}
-How far does an object fall in the following time? Give your answer rounded to 2 decimal places.
-{query}
+Now, determine the falling distance for t = {query}s given d = 0.5*g*t^2.

@@ -78,14 +78,39 @@ def _eval_lhs(s, table):
         return None
 
 
+_CANON_OPS = {"+": "+", "-": "-", "*": "*", "/": "//", "%": "%"}
+
+
 def solve(prompt: str, node_budget=3_000_000, max_solutions=4):
     examples, query = _extract(prompt)
     if not examples or query is None:
         return None
+    # fast path: canonical chars (digits and + - * /) keep their identity
+    # meaning; only the weird symbols need assignment. Observed to hold for
+    # most train instances; fall back to the full search if it fails.
+    out = _search(examples, query, fixed_identity=True,
+                  node_budget=node_budget // 10)
+    if out is not None:
+        return out
+    return _search(examples, query, fixed_identity=False,
+                   node_budget=node_budget)
+
+
+def _search(examples, query, fixed_identity, node_budget, max_solutions=4):
     syms = sorted({c for lhs, rhs in examples for c in lhs + rhs} | set(query))
 
-    # order symbols so the shortest examples complete (and prune) first
-    order, seen = [], set()
+    pre_table, pre_used = {}, set()
+    if fixed_identity:
+        for c in syms:
+            if c in _DIGITS:
+                pre_table[c] = c
+                pre_used.add(c)
+            elif c in _CANON_OPS:
+                pre_table[c] = _CANON_OPS[c]
+                pre_used.add(_CANON_OPS[c])
+
+    # order remaining symbols so the shortest examples complete (and prune) first
+    order, seen = [], set(pre_table)
     for lhs, rhs in sorted(examples, key=lambda e: len(e[0]) + len(e[1])):
         for c in lhs + rhs:
             if c not in seen:
@@ -164,7 +189,9 @@ def solve(prompt: str, node_budget=3_000_000, max_solutions=4):
             assigned.discard(c)
             del table[c]
 
-    backtrack(0, {}, set(), set())
+    if not consistent(pre_table, set(pre_table)):
+        return None
+    backtrack(0, dict(pre_table), set(pre_used), set(pre_table))
     if not solutions:
         return None
     return solutions[0]  # preference-ordered search: first hit is best guess

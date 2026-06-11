@@ -1,4 +1,3 @@
-An ancient numeral system writes numbers with unfamiliar symbols. Examples:
+In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
 {examples}
-Write the following number in this numeral system:
-{query}
+Now, write the number {query} in the Wonderland numeral system.

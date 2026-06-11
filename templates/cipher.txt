@@ -1,4 +1,3 @@
-A substitution cipher replaces each letter with another. Decoded examples:
+In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
 {examples}
-Decode the following message:
-{query}
+Now, decrypt the following text: {query}

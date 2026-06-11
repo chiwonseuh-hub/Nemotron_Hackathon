@@ -1,19 +1,23 @@
 """Solver for the 'bits' puzzle type: infer a w-bit (train: 8) transformation
 rule from example (input -> output) pairs and apply it to the query.
 
-Observed rule family (reverse-engineered from train.csv): unary chains
-(shift / rotate / NOT) possibly combined by a binary (XOR / AND / OR / ADD)
-or ternary (maj / ch) bitwise op, plus constant XOR/ADD/AND/OR variants.
+Reverse-engineered rule family (train.csv): boolean/arithmetic expression
+trees over shifted/rotated/negated copies of the input, e.g.
+  rotr2(x),  xor(shl2(x), shr5(x)),  maj(shr1(x), rotr2(x), shl2(x)),
+  or(xor(rotl1(x), not(shl3(x))), shr3(x))
 
-Search cascade (cheap -> expensive):
-  1. unary chain-2 + const-op-after-unary candidates (pure python)
+Search cascade (cheap & high-precision first); within a stage every fitting
+rule votes on the query output and the majority wins:
+  1. unary chain-2 + const-op-after-unary (pure python)
   2. binary ops over chain-2 pairs (numpy, meet-in-middle for XOR)
-  3. maj / ch over unary/not-chain triples (numpy)
+  3. 2-level xor-top trees over single/not operands
+  4. maj / ch over chain-2 triples
+  5. 3-leaf left-assoc trees with ops {xor,and,or,add,sub} over single/not
+     operands (covers the or(xnor(..),..) family)
 
-Ambiguity guard: within the stage that first fits, ALL fitting rules must
-agree on the query, otherwise None is returned (important when this solver is
-used as the oracle for synthetic data generation).
+~4% of train instances use even deeper trees and stay unsolved (None).
 """
+from collections import Counter
 from itertools import product
 
 import numpy as np
@@ -54,10 +58,11 @@ def _unaries(w):
 
 
 _CHAIN_CACHE = {}
+_OPERAND_CACHE = {}
 
 
 def _chains2(w):
-    """Distinct unary chain-2 functions as full lookup tables (len 2^w)."""
+    """Distinct unary chain-2 functions as full lookup tables."""
     if w not in _CHAIN_CACHE:
         uns = _unaries(w)
         seen = {}
@@ -72,9 +77,22 @@ def _chains2(w):
     return _CHAIN_CACHE[w]
 
 
+def _operands(w):
+    """Single unaries + not-wrapped unaries (~58 for w=8)."""
+    if w not in _OPERAND_CACHE:
+        m = _mask(w)
+        seen = {}
+        for n, f in _unaries(w):
+            seen.setdefault(tuple(f(x) for x in range(1 << w)), n)
+            seen.setdefault(tuple(~f(x) & m for x in range(1 << w)), f"not({n})")
+        _OPERAND_CACHE[w] = [(name, np.array(tab, dtype=np.int64))
+                             for tab, name in seen.items()]
+    return _OPERAND_CACHE[w]
+
+
 def candidate_functions(w, pairs):
     """Stage-1 candidates: unary chains and const ops (constants solved from
-    the first pair). Kept for speed and reused by the generator."""
+    the first pair). Reused by the synthetic generator."""
     m = _mask(w)
     uns = _unaries(w)
     x0, y0 = pairs[0]
@@ -94,76 +112,80 @@ def candidate_functions(w, pairs):
             yield (f"or{c_or:0{w}b}({n1})", lambda x, f1=f1, c=c_or: f1(x) | c)
 
 
-def _stage1(pairs, w, qx):
-    outs = set()
+def fit_rule(pairs, w):
+    """First stage-1 rule fitting all pairs (generator helper)."""
+    for name, fn in candidate_functions(w, pairs):
+        if all(fn(x) == y for x, y in pairs):
+            return name, fn
+    return None, None
+
+
+def _stage1(pairs, w, qx, A=None, Aq=None, ys=None):
+    votes = Counter()
     for _, fn in candidate_functions(w, pairs):
         if all(fn(x) == y for x, y in pairs):
-            outs.add(fn(qx))
-            if len(outs) > 1:
-                return None
-    return outs.pop() if outs else None
+            votes[fn(qx)] += 1
+    return votes
 
 
-def _stage2_binary(pairs, w, qx):
-    """op(g1(x), g2(x)) for chain-2 g1,g2 and op in xor/and/or/add."""
+def _stage2_binary(pairs, w, qx, A, Aq, ys):
     m = _mask(w)
-    chains = _chains2(w)
-    xs = np.array([p[0] for p in pairs])
-    ys = np.array([p[1] for p in pairs])
-    A = np.stack([tab[xs] for _, tab in chains])          # (n_chains, n_ex)
-    Aq = np.array([tab[qx] for _, tab in chains])         # (n_chains,)
-    outs = set()
-
-    # xor: meet-in-the-middle on row signatures
+    votes = Counter()
+    n = A.shape[0]
     sig = {}
-    for i in range(len(chains)):
-        sig.setdefault(tuple(A[i]), []).append(i)
-    for i in range(len(chains)):
-        tgt = tuple(ys ^ A[i])
+    for i in range(n):
+        sig.setdefault(A[i].tobytes(), []).append(i)
+    for i in range(n):
+        tgt = (ys ^ A[i]).tobytes()
         for j in sig.get(tgt, ()):
-            outs.add(int(Aq[i] ^ Aq[j]))
-            if len(outs) > 1:
-                return None
-
+            votes[int(Aq[i] ^ Aq[j])] += 1
     ops = [(np.bitwise_and, lambda a, b: a & b),
            (np.bitwise_or, lambda a, b: a | b),
-           (lambda a, b: (a + b) & m, lambda a, b: (a + b) & m)]
+           (lambda a, b: (a + b) & m, lambda a, b: (a + b) & m),
+           (lambda a, b: (a - b) & m, lambda a, b: (a - b) & m)]
     for vop, sop in ops:
-        for i in range(len(chains)):
+        for i in range(n):
             hit = (vop(A[i], A) == ys).all(axis=1)
             for j in np.nonzero(hit)[0]:
-                outs.add(int(sop(int(Aq[i]), int(Aq[j]))))
-                if len(outs) > 1:
-                    return None
-    return outs.pop() if outs else None
+                votes[int(sop(int(Aq[i]), int(Aq[j])))] += 1
+    return votes
 
 
-def _stage3_ternary(pairs, w, qx):
+def _stage3_twolevel(pairs, w, qx, A, Aq, ys, B_=None, Bq=None):
+    """xor(g(x), op2(h1(x), h2(x))) over the small operand set."""
+    chains = _operands(w)
+    xs = np.array([p[0] for p in pairs])
+    B_ = np.stack([tab[xs] for _, tab in chains])
+    Bq = np.array([int(tab[qx]) for _, tab in chains])
+    n = len(chains)
+    votes = Counter()
+    sig = {}
+    for j in range(n):
+        for k in range(j, n):
+            for op in (np.bitwise_xor, np.bitwise_and, np.bitwise_or):
+                v = op(B_[j], B_[k])
+                sig.setdefault(v.tobytes(), []).append(int(op(Bq[j:j + 1], Bq[k:k + 1])[0]))
+    for i in range(n):
+        tgt = (ys ^ B_[i]).tobytes()
+        for hq in sig.get(tgt, ()):
+            votes[int(Bq[i]) ^ hq] += 1
+    return votes
+
+
+def _stage4_ternary(pairs, w, qx, A, Aq, ys):
     """maj/ch over chain-2 triples (numpy-pruned)."""
     m = _mask(w)
-    chains = _chains2(w)
-    xs = np.array([p[0] for p in pairs])
-    ys = np.array([p[1] for p in pairs])
-    A = np.stack([tab[xs] for _, tab in chains])
-    Aq = np.array([tab[qx] for _, tab in chains])
-    n = len(chains)
-    outs = set()
-
-    # ch(a,b,c): bits of y where a=1 come from b, where a=0 come from c
+    n = A.shape[0]
+    votes = Counter()
     for i in range(n):
         a, aq = A[i], int(Aq[i])
         b_ok = np.nonzero(((A & a) == (ys & a)).all(axis=1))[0]
         c_ok = np.nonzero(((A & ~a & m) == (ys & ~a & m)).all(axis=1))[0]
-        if len(b_ok) and len(c_ok):
-            bq = {int(Aq[j]) & aq for j in b_ok}
-            cq = {int(Aq[k]) & ~aq & m for k in c_ok}
-            for vb in bq:
-                for vc in cq:
-                    outs.add(vb | vc)
-                    if len(outs) > 1:
-                        return None
-
-    # maj(a,b,c) = (a&b) ^ ((a^b)&c)
+        for j in b_ok:
+            for k in c_ok:
+                votes[(int(Aq[j]) & aq) | (int(Aq[k]) & ~aq & m)] += 1
+    if votes:
+        return votes
     for i in range(n):
         for j in range(i, n):
             ab = A[i] & A[j]
@@ -172,58 +194,35 @@ def _stage3_ternary(pairs, w, qx):
                 continue
             need = (ys ^ ab) & mask_ij
             hit = np.nonzero(((A & mask_ij) == need).all(axis=1))[0]
-            if len(hit):
-                abq = int(Aq[i]) & int(Aq[j])
-                mq = int(Aq[i]) ^ int(Aq[j])
-                for k in hit:
-                    outs.add(abq ^ (mq & int(Aq[k])))
-                    if len(outs) > 1:
-                        return None
-    return outs.pop() if outs else None
+            abq = int(Aq[i]) & int(Aq[j])
+            mq = int(Aq[i]) ^ int(Aq[j])
+            for k in hit:
+                votes[abq ^ (mq & int(Aq[k]))] += 1
+    return votes
 
 
-def _operands(w):
-    """Single unaries + not-wrapped unaries as lookup tables (~58 for w=8)."""
+def _stage5_threeleaf(pairs, w, qx, A, Aq, ys):
+    """op2(op1(l1,l2), l3) over single/not operands, ops incl add/sub."""
     m = _mask(w)
-    seen = {}
-    for n, f in _unaries(w):
-        for pn, pf in (("", lambda v: v), ("not.", lambda v, m=m: ~v & m)):
-            tab = tuple(pf(f(x)) for x in range(1 << w))
-            seen.setdefault(tab, f"{pn}{n}")
-    return [(name, np.array(tab, dtype=np.int64)) for tab, name in seen.items()]
-
-
-def _stage4_twolevel(pairs, w, qx):
-    """xor(g(x), op2(h1(x), h2(x))) over the small operand set."""
     chains = _operands(w)
     xs = np.array([p[0] for p in pairs])
-    ys = np.array([p[1] for p in pairs])
-    A = np.stack([tab[xs] for _, tab in chains])
-    Aq = np.array([int(tab[qx]) for _, tab in chains])
+    B_ = np.stack([tab[xs] for _, tab in chains])
+    Bq = np.array([int(tab[qx]) for _, tab in chains])
     n = len(chains)
-    outs = set()
-    sig = {}
-    for j in range(n):
-        for k in range(j, n):
-            for op in (np.bitwise_xor, np.bitwise_and, np.bitwise_or):
-                v = op(A[j], A[k])
-                sig.setdefault(v.tobytes(), []).append(int(op(Aq[j:j+1], Aq[k:k+1])[0]))
-    for i in range(n):
-        tgt = (ys ^ A[i]).tobytes()
-        for hq in sig.get(tgt, ()):
-            outs.add(int(Aq[i]) ^ hq)
-            if len(outs) > 1:
-                return None
-    return outs.pop() if outs else None
-
-
-def fit_rule(pairs, w):
-    """Back-compat helper for the generator: first stage-1 rule fitting all
-    pairs, as (name, fn)."""
-    for name, fn in candidate_functions(w, pairs):
-        if all(fn(x) == y for x, y in pairs):
-            return name, fn
-    return None, None
+    nex = len(pairs)
+    votes = Counter()
+    ops = [(lambda a, b: (a + b) & m), (lambda a, b: (a - b) & m),
+           np.bitwise_xor, np.bitwise_and, np.bitwise_or]
+    for op1 in ops:
+        for i in range(n):
+            mid = op1(B_[i], B_)          # (n, nex)
+            midq = op1(int(Bq[i]), Bq)    # (n,)
+            for op2 in ops:
+                for k in range(n):
+                    hit = (op2(mid, B_[k]) == ys).all(axis=1)
+                    for j in np.nonzero(hit)[0]:
+                        votes[int(op2(int(midq[j]), int(Bq[k])))] += 1
+    return votes
 
 
 def solve(prompt: str):
@@ -234,11 +233,17 @@ def solve(prompt: str):
     if any(len(a) != w or len(b) != w for a, b in str_pairs) or len(query) != w:
         return None
     if w > 16:
-        return None  # chain table would be too large
+        return None
     pairs = [(int(a, 2), int(b, 2)) for a, b in str_pairs]
     qx = int(query, 2)
-    for stage in (_stage1, _stage2_binary, _stage4_twolevel, _stage3_ternary):
-        out = stage(pairs, w, qx)
-        if out is not None:
-            return format(out, f"0{w}b")
+    chains = _chains2(w)
+    xs = np.array([p[0] for p in pairs])
+    ys = np.array([p[1] for p in pairs])
+    A = np.stack([tab[xs] for _, tab in chains])
+    Aq = np.array([int(tab[qx]) for _, tab in chains])
+    for stage in (_stage1, _stage2_binary, _stage3_twolevel,
+                  _stage4_ternary, _stage5_threeleaf):
+        votes = stage(pairs, w, qx, A, Aq, ys)
+        if votes:
+            return format(votes.most_common(1)[0][0], f"0{w}b")
     return None

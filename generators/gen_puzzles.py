@@ -1,14 +1,7 @@
-"""Synthetic puzzle generators for all 6 train types + OOD 'neighbor' variants.
-
-Every generated item is verified with the corresponding solver before being
-emitted, guaranteeing (prompt, answer) consistency.
-
-IMPORTANT — prompt templates: real train.csv templates are not yet in this
-repo. Each type reads its template from templates/<type>.txt with slots
-{examples} and {query}. The bundled templates are GENERIC PLACEHOLDERS; once
-train.csv is available, run scripts/extract_templates.py (or copy a real
-prompt manually) and overwrite the template files so synthetic prompts match
-the train distribution exactly.
+"""Synthetic puzzle generators matching the real train.csv formats exactly
+(templates/<type>.txt are copied from real prompts), plus OOD 'neighbor'
+variants. Every item is verified with the corresponding solver before being
+emitted, so (prompt, answer) consistency is guaranteed.
 """
 import os
 import random
@@ -17,14 +10,11 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from solvers import bits as bits_solver  # noqa: E402
+from solvers import cipher as cipher_solver  # noqa: E402
+from solvers import equations as eq_solver  # noqa: E402
 from solvers.numeral import to_roman  # noqa: E402
 
 _TPL_DIR = os.path.join(os.path.dirname(__file__), "..", "templates")
-
-WORDS = ("the quick brown fox jumps over lazy dog pack my box with five dozen "
-         "liquor jugs how vexingly daft zebras time flies like an arrow fruit "
-         "bright vixens jump dozy fowl quack waltz bad nymph for quick jigs vex "
-         "sphinx of black quartz judge my vow").split()
 
 
 def _tpl(name):
@@ -36,9 +26,12 @@ def _render(name, examples, query):
     return _tpl(name).format(examples="\n".join(examples), query=query)
 
 
+def _vocab():
+    return cipher_solver._vocab()
+
+
 # ---------------------------------------------------------------- bits
-def gen_bits(rng, width=8, n_examples=4):
-    """Pick a random rule from the solver's own candidate library."""
+def gen_bits(rng, width=8, n_examples=8):
     m = (1 << width) - 1
     for _ in range(50):
         xs = rng.sample(range(m + 1), n_examples + 1)
@@ -49,38 +42,43 @@ def gen_bits(rng, width=8, n_examples=4):
         qx = xs[-1]
         examples = [f"{x:0{width}b} -> {y:0{width}b}" for x, y in pairs]
         prompt = _render("bits", examples, f"{qx:0{width}b}")
+        if width != 8:
+            prompt = prompt.replace("8-bit", f"{width}-bit")
         ans = bits_solver.solve(prompt)
-        # keep only unambiguous puzzles: solver's rule and the intended rule
-        # must agree on the query
+        # keep only unambiguous puzzles: solver must agree with intended rule
         if ans is not None and int(ans, 2) == fn(qx):
             return prompt, ans
     return None
 
 
 # ---------------------------------------------------------------- gravity
-def gen_gravity(rng, n_examples=3, linear=False):
+def gen_gravity(rng, n_examples=5, linear=False):
     g = round(rng.uniform(1.5, 30.0), 2)
-    ts = rng.sample([round(0.5 * i, 1) for i in range(1, 21)], n_examples + 1)
+    ts = [round(rng.uniform(1.0, 5.0), 2) for _ in range(n_examples + 1)]
+    if len(set(ts)) != len(ts):
+        ts = [round(t + i * 0.01, 2) for i, t in enumerate(ts)]
     law = (lambda t: g * t) if linear else (lambda t: 0.5 * g * t * t)
-    examples = [f"t = {t} s, d = {law(t):.2f} m" for t in ts[:-1]]
+    examples = [f"For t = {t}s, distance = {law(t):.2f} m" for t in ts[:-1]]
     qt = ts[-1]
-    prompt = _render("gravity", examples, f"t = {qt} s")
+    prompt = _render("gravity", examples, f"{qt}")
+    if linear:
+        prompt = prompt.replace("d = 0.5*g*t^2", "d = g*t")
     return prompt, f"{law(qt):.2f}"
 
 
 # ---------------------------------------------------------------- units
-def gen_units(rng, n_examples=3, affine=False):
-    r = round(rng.uniform(0.05, 50.0), 3)
-    b = round(rng.uniform(-20, 20), 2) if affine else 0.0
-    xs = rng.sample(range(1, 500), n_examples + 1)
-    examples = [f"{x} zarks = {r * x + b:.2f} blims" for x in xs[:-1]]
+def gen_units(rng, n_examples=5, affine=False):
+    r = round(rng.uniform(0.05, 5.0), 4)
+    b = round(rng.uniform(-10, 10), 2) if affine else 0.0
+    xs = [round(rng.uniform(5.0, 60.0), 2) for _ in range(n_examples + 1)]
+    examples = [f"{x} m becomes {r * x + b:.2f}" for x in xs[:-1]]
     qx = xs[-1]
-    prompt = _render("units", examples, f"{qx} zarks")
+    prompt = _render("units", examples, f"{qx}")
     return prompt, f"{r * qx + b:.2f}"
 
 
 # ---------------------------------------------------------------- cipher
-def gen_cipher(rng, n_examples=3, caesar=False):
+def gen_cipher(rng, n_examples=5, caesar=False):
     letters = string.ascii_lowercase
     if caesar:
         k = rng.randrange(1, 26)
@@ -93,21 +91,20 @@ def gen_cipher(rng, n_examples=3, caesar=False):
     def encrypt(s):
         return "".join(enc.get(c, c) for c in s)
 
-    phrases = [" ".join(rng.sample(WORDS, rng.randint(2, 4)))
+    vocab = _vocab()
+    phrases = [" ".join(rng.sample(vocab, rng.randint(3, 5)))
                for _ in range(n_examples)]
-    # query must only use letters covered by the examples, or it is unsolvable
-    seen = set("".join(phrases))
-    covered = [w for w in WORDS if set(w) <= seen]
-    if len(covered) < 3:
-        return None
-    q = " ".join(rng.sample(covered, 3))
-    examples = [f'"{encrypt(p)}" -> "{p}"' for p in phrases]
-    prompt = _render("cipher", examples, f'"{encrypt(q)}"')
+    q = " ".join(rng.sample(vocab, rng.randint(3, 4)))
+    examples = [f"{encrypt(p)} -> {p}" for p in phrases]
+    prompt = _render("cipher", examples, encrypt(q))
+    ans = cipher_solver.solve(prompt)
+    if ans != q:
+        return None  # ambiguous under vocab constraints; retry
     return prompt, q
 
 
 # ---------------------------------------------------------------- numeral
-def gen_numeral(rng, base=None, n_examples=4):
+def gen_numeral(rng, base=None, n_examples=5):
     if base:  # OOD: base-b digits with custom symbols
         digits = "0123456789abcdef"[:base]
         symbols = rng.sample(string.ascii_uppercase, base)
@@ -119,55 +116,58 @@ def gen_numeral(rng, base=None, n_examples=4):
                 s = "0123456789abcdef"[n % base] + s
                 n //= base
             return "".join(table[c] for c in (s or "0"))
-    else:  # roman numerals with substituted symbols
-        canon = "IVXLCDM"
-        symbols = rng.sample([c for c in string.ascii_uppercase if c not in canon], 7)
-        table = dict(zip(canon, symbols))
-
-        def render(n):
-            return "".join(table[c] for c in to_roman(n))
+    else:  # in-distribution: standard roman numerals
+        render = to_roman
 
     for _ in range(50):
-        ns = rng.sample(range(1, 2500), n_examples + 1)
-        examples = [f"{n} -> {render(n)}" for n in ns[:-1]]
+        ns = rng.sample(range(1, 400), n_examples + 1)
         qn = ns[-1]
-        # query must only use symbols covered by the examples
-        if not set(render(qn)) <= set("".join(render(n) for n in ns[:-1])):
+        if base and not set(render(qn)) <= set("".join(render(n) for n in ns[:-1])):
             continue
+        examples = [f"{n} -> {render(n)}" for n in ns[:-1]]
         prompt = _render("numeral", examples, str(qn))
         return prompt, render(qn)
     return None
 
 
 # ---------------------------------------------------------------- equations
-def gen_equations(rng, n_symbols=5, n_examples=4):
-    from solvers.equations import solve as eq_solve
+_EQ_SYMBOL_POOL = "@#$%&!?^~;:<>(){}[]`'\"\\|/+-*0123456789"
 
-    for _ in range(50):
-        digits = rng.sample("123456789", n_symbols - 1)  # avoid leading zeros
-        canon = digits + [rng.choice("+-*")]
-        symbols = rng.sample("@#$%&!?^~;", n_symbols)
-        table = dict(zip(canon, symbols))
 
-        def make_expr():
-            a = "".join(rng.choices(digits, k=rng.randint(1, 2)))
-            b = "".join(rng.choices(digits, k=rng.randint(1, 2)))
-            op = canon[-1]
-            return f"{a}{op}{b}", eval(f"{int(a)}{op}{int(b)}")
-
-        examples, used = [], set()
-        for _ in range(n_examples):
-            expr, val = make_expr()
-            used.update(expr)
-            examples.append(f"{''.join(table[c] for c in expr)} = {val}")
-        qexpr, qval = make_expr()
-        if not set(qexpr) <= used:  # query symbols must appear in examples
+def gen_equations(rng, n_examples=4, ops="+-*"):
+    """Real encoding: substitute a random subset of canonical chars with
+    distinct symbols, write each side REVERSED."""
+    for _ in range(80):
+        # build substitution: every canonical char maps somewhere (mostly id)
+        canon = list("0123456789") + list(ops)
+        n_sub = rng.randint(3, len(canon))
+        subbed = rng.sample(canon, n_sub)
+        pool = [s for s in _EQ_SYMBOL_POOL if s not in canon or s in subbed]
+        rng.shuffle(pool)
+        table = {c: c for c in canon}
+        for c, s in zip(subbed, pool):
+            table[c] = s
+        if len(set(table.values())) != len(table):
             continue
-        prompt = _render("equations", examples,
-                         f"{''.join(table[c] for c in qexpr)} = ?")
-        # reject ambiguous puzzles (multiple mappings fitting the examples)
-        if eq_solve(prompt) == str(qval):
-            return prompt, str(qval)
+
+        def enc(plain):
+            return "".join(table[c] for c in plain)[::-1]
+
+        lines, q = [], None
+        ok = True
+        for i in range(n_examples + 1):
+            a = rng.randint(10, 99)
+            b = rng.randint(10, 99)
+            op = rng.choice(ops)
+            val = eval(f"{a}{op}{b}")
+            if i < n_examples:
+                lines.append(f"{enc(f'{a}{op}{b}')} = {enc(str(val))}")
+            else:
+                q = (f"{a}{op}{b}", val)
+        prompt = _render("equations", lines, enc(q[0]))
+        gold = enc(str(q[1]))
+        if eq_solver.solve(prompt) == gold:
+            return prompt, gold
     return None
 
 

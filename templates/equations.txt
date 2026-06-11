@@ -1,4 +1,3 @@
-Symbols have been substituted for digits and operators in these equations:
+In Alice's Wonderland, a secret set of transformation rules is applied to equations. Below are a few examples:
 {examples}
-Using the same substitution, evaluate:
-{query}
+Now, determine the result for: {query}

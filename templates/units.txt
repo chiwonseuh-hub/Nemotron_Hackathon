@@ -1,4 +1,3 @@
-An alien civilization uses unfamiliar units. Known conversions:
+In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
 {examples}
-Convert the following quantity into blims. Give your answer rounded to 2 decimal places.
-{query}
+Now, convert the following measurement: {query} m

@@ -1,4 +1,6 @@
-A hidden rule transforms 8-bit binary strings. Here are some examples:
+In Alice's Wonderland, a secret bit manipulation rule transforms 8-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
 {examples}
-Apply the same rule to the following input and give the resulting binary string.
-{query}
+
+Now, determine the output for: {query}
