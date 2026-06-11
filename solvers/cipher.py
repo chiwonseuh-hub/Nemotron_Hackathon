@@ -1,75 +1,112 @@
-"""Solver for 'cipher': character-level substitution cipher. Recover the
-substitution table from example (plaintext, ciphertext) pairs, then decode the
-query. Tries both directions (the prompt may list pairs as plain->cipher while
-asking to decode, or vice versa). Answer: decoded text, exact format.
+"""Solver for 'cipher': letter-substitution cipher with examples
+'ciphertext -> plaintext' and a query 'Now, decrypt the following text: ...'.
+
+The query may contain cipher letters never seen in the examples, so a pure
+table lookup is insufficient. The plaintexts come from a tiny closed
+vocabulary (77 words, extracted from train.csv into cipher_vocab.txt), so the
+remaining letters are resolved by crossword-style search: each query word must
+decode to a vocabulary word consistent with the (injective) partial mapping.
 """
-from .common import extract_pair_lines, extract_quoted, lines_of
+import os
+import re
+
+from .common import lines_of
+
+_VOCAB_PATH = os.path.join(os.path.dirname(__file__), "cipher_vocab.txt")
+_vocab_cache = None
+
+
+def _vocab():
+    global _vocab_cache
+    if _vocab_cache is None:
+        with open(_VOCAB_PATH, encoding="utf-8") as f:
+            _vocab_cache = [w.strip() for w in f if w.strip()]
+    return _vocab_cache
+
+
+def _extract(prompt):
+    pairs, query = [], None
+    for ln in lines_of(prompt):
+        if "->" in ln:
+            a, b = ln.split("->", 1)
+            a, b = a.strip(), b.strip()
+            if a and b and len(a) == len(b):
+                pairs.append((a, b))
+        else:
+            m = re.search(r"(?:decrypt|decode)[^:]*:\s*(.+)$", ln, re.IGNORECASE)
+            if m:
+                query = m.group(1).strip()
+    return pairs, query
 
 
 def _build_map(pairs):
-    """Char map src->dst from aligned string pairs; None on conflict."""
-    table = {}
-    for src, dst in pairs:
-        if len(src) != len(dst):
-            return None
-        for a, b in zip(src, dst):
-            if a == " " and b == " ":
+    fwd, used = {}, {}
+    for c_txt, p_txt in pairs:
+        for c, p in zip(c_txt, p_txt):
+            if c == " " or p == " ":
+                if (c == " ") != (p == " "):
+                    return None
                 continue
-            if table.get(a, b) != b:
-                return None
-            table[a] = b
-    return table
+            if fwd.get(c, p) != p or used.get(p, c) != c:
+                return None  # not consistent / not injective
+            fwd[c] = p
+            used[p] = c
+    return fwd
 
 
-def _apply(table, text):
+def _candidates(cword, fwd, used, vocab):
     out = []
-    for c in text:
-        if c == " ":
-            out.append(" ")
-        elif c in table:
-            out.append(table[c])
-        else:
-            return None
-    return "".join(out)
-
-
-def _candidate_query(prompt, pair_strings):
-    """The query is typically the last quoted/standalone string that is not
-    part of an example pair."""
-    used = set(pair_strings)
-    cands = [q for q in extract_quoted(prompt) if q not in used]
-    if cands:
-        return cands[-1]
-    # fallback: last non-empty line's tail after a colon
-    for ln in reversed(lines_of(prompt)):
-        if ":" in ln:
-            tail = ln.rsplit(":", 1)[1].strip().strip("\"'")
-            if tail and tail not in used:
-                return tail
-    return None
+    for w in vocab:
+        if len(w) != len(cword):
+            continue
+        local = {}
+        ok = True
+        for c, p in zip(cword, w):
+            known = fwd.get(c) or local.get(c)
+            if known is not None:
+                if known != p:
+                    ok = False
+                    break
+            else:
+                if p in used or p in local.values():
+                    ok = False
+                    break
+                local[c] = p
+        if ok:
+            out.append((w, local))
+    return out
 
 
 def solve(prompt: str):
-    pairs = extract_pair_lines(prompt)
-    # strip surrounding quotes from pair members
-    pairs = [(a.strip("\"'“”‘’ "), b.strip("\"'“”‘’ ")) for a, b in pairs]
-    pairs = [(a, b) for a, b in pairs if a and b and len(a) == len(b)]
-    if not pairs:
+    pairs, query = _extract(prompt)
+    if not pairs or query is None:
         return None
-    flat = [s for p in pairs for s in p]
-    query = _candidate_query(prompt, flat)
-    if query is None:
-        return None
-    # direction 1: examples are cipher->plain, query is cipher
     fwd = _build_map(pairs)
-    if fwd is not None:
-        res = _apply(fwd, query)
-        if res is not None:
-            return res
-    # direction 2: examples are plain->cipher, query is cipher -> invert
-    rev = _build_map([(b, a) for a, b in pairs])
-    if rev is not None:
-        res = _apply(rev, query)
-        if res is not None:
-            return res
+    if fwd is None:
+        return None
+    used = set(fwd.values())
+    vocab = _vocab()
+    cwords = query.split()
+
+    # most-constrained-first: fewest candidate words
+    order = sorted(range(len(cwords)),
+                   key=lambda i: len(_candidates(cwords[i], fwd, used, vocab)))
+
+    solution = [None] * len(cwords)
+
+    def dfs(k, fwd, used):
+        if k == len(cwords):
+            return True
+        i = order[k]
+        for w, local in _candidates(cwords[i], fwd, used, vocab):
+            solution[i] = w
+            fwd2 = dict(fwd)
+            fwd2.update(local)
+            if dfs(k + 1, fwd2, used | set(local.values())):
+                return True
+        solution[i] = None
+        return False
+
+    if dfs(0, fwd, used):
+        return " ".join(solution)
     return None

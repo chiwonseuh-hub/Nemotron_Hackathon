@@ -49,18 +49,17 @@ def _learn_subst(canon_obs_pairs):
 
 
 def _extract_examples(prompt):
-    """(int, representation) pairs: lines containing an integer and a
-    non-numeric token; the query is the last line with only an integer."""
+    """Example pairs come from 'N -> SYMBOLS' lines; the query is the number
+    on the final line without '->' ('Now, write the number 38 in ...')."""
     pairs, query = [], None
     for ln in lines_of(prompt):
+        m = re.match(r"(\d+)\s*(?:->|=>|→)\s*(\S+)\s*$", ln)
+        if m:
+            pairs.append((int(m.group(1)), m.group(2)))
+            continue
         nums = re.findall(r"\b\d+\b", ln)
-        toks = re.findall(r"[^\W\d_]{1,40}", ln, flags=re.UNICODE)
-        # representation token: longest alphabetic-ish token on the line
-        rep = max(toks, key=len) if toks else None
-        if len(nums) == 1 and rep and len(rep) >= 1:
-            pairs.append((int(nums[0]), rep))
-        elif len(nums) == 1:
-            query = int(nums[0])
+        if nums:
+            query = int(nums[-1])
     return pairs, query
 
 
@@ -71,6 +70,10 @@ def solve(prompt: str):
     # hypothesis 1: roman numerals with substituted symbols
     table = _learn_subst([(to_roman(n), s) for n, s in pairs])
     if table is not None:
+        # identity substitution => plain roman; covers query chars the
+        # examples never showed (e.g. examples up to L, query needs C)
+        if all(k == v for k, v in table.items()):
+            return to_roman(query)
         canon = to_roman(query)
         if all(c in table for c in canon):
             return "".join(table[c] for c in canon)

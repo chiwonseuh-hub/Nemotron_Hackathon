@@ -5,7 +5,9 @@ then compute d for the queried t. Answer: 2-decimal float string.
 Also tries the swapped column order (d, t) and, as an OOD fallback, the linear
 law v = g*t.
 """
-from .common import extract_number_pairs
+import re
+
+from .common import extract_number_pairs, lines_of
 
 _REL_TOL = 1e-3
 
@@ -21,9 +23,31 @@ def _consensus(values, min_count=2):
     return (best, best_n) if best_n >= min_count else (None, 0)
 
 
+_QUERY_RE = re.compile(r"t\s*=\s*(-?\d+(?:\.\d+)?)\s*s")
+
+
+def _extract_query_t(prompt, pairs):
+    """The train query line ('... for t = 4.41s given d = 0.5*g*t^2.') has 3
+    numbers, so extract_number_pairs misses it. Take the t= value on the last
+    line that is not an example pair."""
+    pair_ts = {t for t, _ in pairs} | {d for _, d in pairs}
+    for ln in reversed(lines_of(prompt)):
+        nums = _QUERY_RE.findall(ln)
+        if nums and float(nums[0]) not in pair_ts:
+            return float(nums[0])
+        if nums:
+            return float(nums[0])
+    return None
+
+
 def solve(prompt: str):
     pairs, query_t = extract_number_pairs(prompt)
-    if not pairs or query_t is None:
+    if not pairs:
+        return None
+    qt = _extract_query_t(prompt, pairs)
+    if qt is not None:
+        query_t = qt
+    if query_t is None:
         return None
     orderings = (pairs, [(b, a) for a, b in pairs])
     # quadratic law d = 0.5*g*t^2 first, linear v = g*t as OOD fallback;

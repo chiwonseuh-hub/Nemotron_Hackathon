@@ -9,9 +9,20 @@ from . import bits, cipher, equations, gravity, numeral, units
 
 _BIN_RE = re.compile(r"\b[01]{6,32}\b")
 
+# distinctive first-line phrases observed in train.csv (each type has exactly
+# one fixed template)
+_SIGNATURES = [
+    ("bit manipulation", "bits"),
+    ("gravitational constant", "gravity"),
+    ("unit conversion", "units"),
+    ("encryption rules", "cipher"),
+    ("numeral system", "numeral"),
+    ("applied to equations", "equations"),
+]
+
 _KEYWORDS = {
     "gravity": ["gravity", "fall", "drop", "planet", "meters", "height", "seconds"],
-    "units": ["convert", "unit", "glorbs", "measurement", "equals", "ratio"],
+    "units": ["convert", "unit", "measurement", "equals", "ratio"],
     "cipher": ["cipher", "decode", "decrypt", "encrypt", "encoded", "translat"],
     "numeral": ["numeral", "roman", "notation", "number system", "symbols represent"],
     "equations": ["equation", "expression", "evaluate", "solve", "operator"],
@@ -20,6 +31,10 @@ _KEYWORDS = {
 
 def detect_type(prompt: str) -> str:
     p = prompt.lower()
+    for sig, t in _SIGNATURES:
+        if sig in p:
+            return t
+    # fallback heuristics for unseen/OOD phrasings
     if len(_BIN_RE.findall(prompt)) >= 3:
         return "bits"
     scores = {t: sum(k in p for k in kws) for t, kws in _KEYWORDS.items()}
