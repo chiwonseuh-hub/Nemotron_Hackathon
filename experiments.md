@@ -50,12 +50,32 @@ Reverse-engineered formats:
   +, -, *, abs-, and an odd `a+b+1` case; signed vs abs subtraction both
   occur. Solver: positional domains + backtracking + identity-first value
   ordering.
-- **bits**: staged hypothesis search. Stage1 unary-chain/const (fast),
-  stage2 binary over chain-2 (numpy meet-in-middle), stage4 2-level trees,
-  stage3 maj/ch over chain-2. First pass: 88.8% with unanimity guard;
-  majority voting recovers ~46/180 failures. ~105 instances are deeper
-  boolean expression trees (e.g. `or(xor(rotl1, not(shl3)), shr3)`) —
-  3-leaf mixed trees solve ~40%, 4-leaf search ongoing.
+- **bits**: staged hypothesis search with per-stage majority voting:
+  unary-chain/const -> binary over chain-2 -> 2-level xor-top trees ->
+  maj/ch over chain-2 -> 3-leaf mixed-op trees (xor/and/or/add/sub over
+  single/not operands, covers `or(xor(rotl1, not(shl3)), shr3)` forms).
+  **Full train: 95.2%** (1525/1602, 53 none + 24 bad). Remainder are even
+  deeper trees; probed 4-leaf shapes, maj/ch-inside, running-value
+  pipelines, bit-permutations, affine mod 256 — no fit. Diminishing
+  returns; rejection sampling uses gold answers anyway.
+
+### equations deep-dive (status: ~70% of instances uncracked)
+Confirmed mechanics (deep enumeration with gold-map recovery):
+- both FORWARD and REVERSED encodings exist (per instance)
+- digits keep identity when they appear as digits; substituted chars get
+  weird symbols; canonical ops sometimes remapped ('/'->'-')
+- op pool confirmed: +, -, *, abs(a-b) (02e871e4), a+b+1 (09302769:
+  `21'16 = 38`, `90'91 -> 182`), signed minus with encoded sign (00d8b3db
+  gold '17/' = rev('-71' encoded))
+- signed-vs-abs subtraction is indistinguishable from the examples when
+  results are positive; gold differs per instance -> irreducible ~coin-flip
+  on a small slice.
+Uncracked class (e.g. 00457d26, 02c15453, 0dce4039): exhaustively ruled out
+within "single binary op + injective char map" paradigm: both directions,
+op symbols unknown (any 1-3 chars), multi-op exprs with precedence,
+digit-reversal/swap/abs flags, leading zeros, non-injective maps, bases
+7-16, digit-wise mod-10 ops, a-b+k offsets. Each gives 0 fits or misses
+gold. Parked — revisit only if time remains after SFT loop.
 
 ## Baselines
 

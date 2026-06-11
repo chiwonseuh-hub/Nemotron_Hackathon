@@ -68,13 +68,18 @@ def gen_gravity(rng, n_examples=5, linear=False):
 
 # ---------------------------------------------------------------- units
 def gen_units(rng, n_examples=5, affine=False):
+    from solvers import units as units_solver
+
     r = round(rng.uniform(0.05, 5.0), 4)
     b = round(rng.uniform(-10, 10), 2) if affine else 0.0
     xs = [round(rng.uniform(5.0, 60.0), 2) for _ in range(n_examples + 1)]
     examples = [f"{x} m becomes {r * x + b:.2f}" for x in xs[:-1]]
     qx = xs[-1]
     prompt = _render("units", examples, f"{qx}")
-    return prompt, f"{r * qx + b:.2f}"
+    gold = f"{r * qx + b:.2f}"
+    if affine and units_solver.solve(prompt) != gold:
+        return None  # rounding made the affine fit ambiguous; retry
+    return prompt, gold
 
 
 # ---------------------------------------------------------------- cipher
@@ -136,11 +141,15 @@ _EQ_SYMBOL_POOL = "@#$%&!?^~;:<>(){}[]`'\"\\|/+-*0123456789"
 
 def gen_equations(rng, n_examples=4, ops="+-*"):
     """Real encoding: substitute a random subset of canonical chars with
-    distinct symbols, write each side REVERSED."""
+    distinct symbols; about half of train instances also write each side
+    reversed, so sample both variants."""
+    reverse = rng.random() < 0.5
     for _ in range(80):
         # build substitution: every canonical char maps somewhere (mostly id)
         canon = list("0123456789") + list(ops)
-        n_sub = rng.randint(3, len(canon))
+        # keep substitution count moderate so the solver verification (and
+        # the model's induction task) stays tractable
+        n_sub = rng.randint(2, 7)
         subbed = rng.sample(canon, n_sub)
         pool = [s for s in _EQ_SYMBOL_POOL if s not in canon or s in subbed]
         rng.shuffle(pool)
@@ -151,7 +160,8 @@ def gen_equations(rng, n_examples=4, ops="+-*"):
             continue
 
         def enc(plain):
-            return "".join(table[c] for c in plain)[::-1]
+            s = "".join(table[c] for c in plain)
+            return s[::-1] if reverse else s
 
         lines, q = [], None
         ok = True

@@ -1,18 +1,19 @@
-"""Solver for 'equations' (reverse-engineered from train.csv):
+"""Solver for 'equations' (reverse-engineered from train.csv, partial).
 
-The plain equation (e.g. "44-43 = 1") is encoded by (a) REVERSING each side's
-string and (b) substituting characters injectively (digits usually map to
-themselves; operators map to symbols like / | \\ ` ! ...). Example:
-  plain  25-96 = -71
-  encode reverse+subst -> "69/52 = 17/"   ('/' encodes '-')
+Known generator family: a plain equation (e.g. "44-43 = 1") is encoded by
+substituting characters injectively (digits usually keep identity; operators
+may be remapped to symbols) and — in many instances — REVERSING each side's
+string. Both forward and reversed instances exist, e.g.
+  reversed: plain 25-96 = -71   ->  "69/52 = 17/"   ('/' encodes '-')
+  forward:  37-29 = 8 ; 21'16 = 38  (plain digits, "'" encodes a+b+1)
 
-So: reverse the encoded strings, backtrack over symbol -> canonical
-assignments (digit 0-9 or one of the ops), verify every example equation,
-then evaluate the query and re-encode its result (reversed, sign included).
+Observed op pool so far: +, -, *, abs(a-b), a+b+1, integer //, %, digit
+concatenation. NOTE: ~70% of train instances follow some further variant
+that is still uncracked (solver returns None for those); see experiments.md.
 
-Value ordering prefers the identity for digit symbols and common ops first,
-which empirically matches the generator's choices when several assignments
-fit. "+1" (a+b+1) is included because train instances require it.
+Search: positional domains + backtracking over symbol -> (digit|op)
+assignments with identity-first value ordering, fast path that pins all
+canonical chars (digits and + - * / %) to their identity meaning.
 """
 import re
 
@@ -26,9 +27,11 @@ OPS = {
     "//": lambda a, b: a // b if b else None,
     "%": lambda a, b: a % b if b else None,
     "+1": lambda a, b: a + b + 1,
+    "cat": lambda a, b: int(str(a) + str(b)) if a >= 0 <= b else None,
 }
-_OP_ORDER = ["-", "+", "*", "abs-", "//", "%", "+1"]
+_OP_ORDER = ["-", "+", "*", "abs-", "//", "%", "+1", "cat"]
 _DIGITS = "0123456789"
+_CANON_OPS = {"+": "+", "-": "-", "*": "*", "/": "//", "%": "%"}
 
 
 def _extract(prompt):
@@ -43,61 +46,63 @@ def _extract(prompt):
             continue
         parts = re.split(r"\s=\s", ln)
         if len(parts) == 2:
-            examples.append((parts[0].strip()[::-1], parts[1].strip()[::-1]))
-    return examples, (query[::-1] if query else None)
+            examples.append((parts[0].strip(), parts[1].strip()))
+    return examples, query
 
 
-def _decode_num(s, table):
-    """Decode a reversed-side number: in reversed orientation the minus sign
-    sits at the END."""
-    neg = False
-    if s and table.get(s[-1]) == "-":
-        neg, s = True, s[:-1]
-    if not s:
-        return None
-    digs = [table.get(c) for c in s]
-    if any(d is None or d not in _DIGITS for d in digs):
-        return None
-    return -int("".join(digs)) if neg else int("".join(digs))
-
-
-def _eval_lhs(s, table):
-    ops_pos = [i for i, c in enumerate(s) if table.get(c) in OPS]
-    if len(ops_pos) != 1:
-        return None
-    i = ops_pos[0]
-    if i == 0 or i == len(s) - 1:
-        return None
-    a = _decode_num(s[:i], table)
-    b = _decode_num(s[i + 1:], table)
-    if a is None or b is None:
-        return None
-    try:
-        return OPS[table[s[i]]](a, b)
-    except (ZeroDivisionError, ValueError):
-        return None
-
-
-_CANON_OPS = {"+": "+", "-": "-", "*": "*", "/": "//", "%": "%"}
-
-
-def solve(prompt: str, node_budget=3_000_000, max_solutions=4):
+def solve(prompt: str, node_budget=3_000_000):
     examples, query = _extract(prompt)
     if not examples or query is None:
         return None
-    # fast path: canonical chars (digits and + - * /) keep their identity
-    # meaning; only the weird symbols need assignment. Observed to hold for
-    # most train instances; fall back to the full search if it fails.
-    out = _search(examples, query, fixed_identity=True,
-                  node_budget=node_budget // 10)
-    if out is not None:
-        return out
-    return _search(examples, query, fixed_identity=False,
-                   node_budget=node_budget)
+    for reverse in (False, True):
+        out = _search(examples, query, reverse=reverse, fixed_identity=True,
+                      node_budget=node_budget // 10)
+        if out is not None:
+            return out
+    for reverse in (False, True):
+        out = _search(examples, query, reverse=reverse, fixed_identity=False,
+                      node_budget=node_budget)
+        if out is not None:
+            return out
+    return None
 
 
-def _search(examples, query, fixed_identity, node_budget, max_solutions=4):
+def _search(examples, query, reverse, fixed_identity, node_budget):
+    if reverse:
+        examples = [(l[::-1], r[::-1]) for l, r in examples]
+        query = query[::-1]
     syms = sorted({c for lhs, rhs in examples for c in lhs + rhs} | set(query))
+
+    def decode_num(s, table):
+        """Number with optional minus sign (string-leading in plain
+        orientation => trailing in reversed display)."""
+        neg = False
+        if len(s) > 1 and table.get(s[-1 if reverse else 0]) == "-":
+            neg = True
+            s = s[:-1] if reverse else s[1:]
+        if not s:
+            return None
+        digs = [table.get(c) for c in s]
+        if any(d is None or d not in _DIGITS for d in digs):
+            return None
+        v = int("".join(digs))
+        return -v if neg else v
+
+    def eval_lhs(s, table):
+        ops_pos = [i for i, c in enumerate(s) if table.get(c) in OPS]
+        if len(ops_pos) != 1:
+            return None
+        i = ops_pos[0]
+        if i == 0 or i == len(s) - 1:
+            return None
+        a = decode_num(s[:i], table)
+        b = decode_num(s[i + 1:], table)
+        if a is None or b is None:
+            return None
+        try:
+            return OPS[table[s[i]]](a, b)
+        except (ZeroDivisionError, ValueError):
+            return None
 
     pre_table, pre_used = {}, set()
     if fixed_identity:
@@ -109,7 +114,36 @@ def _search(examples, query, fixed_identity, node_budget, max_solutions=4):
                 pre_table[c] = _CANON_OPS[c]
                 pre_used.add(_CANON_OPS[c])
 
-    # order remaining symbols so the shortest examples complete (and prune) first
+    ex_syms = [(frozenset(lhs + rhs), lhs, rhs) for lhs, rhs in examples]
+
+    # positional restriction: a symbol at a position where only a digit is
+    # legal can't be an operator (number edges; rhs interior)
+    digit_only = set()
+    for lhs, rhs in examples + [(query, "")]:
+        if lhs:
+            digit_only.add(lhs[0])
+            digit_only.add(lhs[-1])
+        digit_only.update(rhs[:-1] if reverse else rhs[1:])
+
+    def values_for(c):
+        vals = []
+        if c in _DIGITS:
+            vals.append(c)
+        vals.extend(d for d in _DIGITS if d != c)
+        if c not in digit_only:
+            vals.extend(_OP_ORDER)
+        return vals
+
+    def consistent(table, assigned):
+        for es, lhs, rhs in ex_syms:
+            if not es <= assigned:
+                continue
+            lv = eval_lhs(lhs, table)
+            rv = decode_num(rhs, table)
+            if lv is None or rv is None or lv != rv:
+                return False
+        return True
+
     order, seen = [], set(pre_table)
     for lhs, rhs in sorted(examples, key=lambda e: len(e[0]) + len(e[1])):
         for c in lhs + rhs:
@@ -121,57 +155,33 @@ def _search(examples, query, fixed_identity, node_budget, max_solutions=4):
             seen.add(c)
             order.append(c)
 
-    ex_syms = [(frozenset(lhs + rhs), lhs, rhs) for lhs, rhs in examples]
-
-    # positional domain restriction: a symbol that ever appears where only a
-    # digit is legal can't be an operator. (Reversed orientation: a number's
-    # minus sign is at the END of the rhs string; expression edges are digits.)
-    digit_only = set()
-    for lhs, rhs in examples + [(query, "")]:
-        if lhs:
-            digit_only.add(lhs[0])
-            digit_only.add(lhs[-1])
-        digit_only.update(rhs[:-1])
-
-    def values_for(c):
-        """Candidate canonical values, identity / common-ops first."""
-        vals = []
-        if c in _DIGITS:
-            vals.append(c)  # identity bias
-        vals.extend(d for d in _DIGITS if d != c)
-        if c not in digit_only:
-            vals.extend(_OP_ORDER)
-        return vals
-
-    def consistent(table, assigned):
-        for es, lhs, rhs in ex_syms:
-            if not es <= assigned:
-                continue
-            lv = _eval_lhs(lhs, table)
-            rv = _decode_num(rhs, table)
-            if lv is None or rv is None or lv != rv:
-                return False
-        return True
-
     budget = [node_budget]
     solutions = []
 
     def backtrack(i, table, used, assigned):
-        if budget[0] <= 0 or len(solutions) >= max_solutions:
+        if budget[0] <= 0 or solutions:
             return
         if i == len(order):
-            val = _eval_lhs(query, table)
+            val = eval_lhs(query, table)
             if val is None:
                 return
             inv = {v: k for k, v in table.items()}
             s = str(val)
+            neg = s.startswith("-")
+            if neg:
+                s = s[1:]
+            if reverse:
+                s = s[::-1]
             out = []
             for c in s:
-                enc = inv.get(c) if c != "-" else inv.get("-")
-                if enc is None:
+                if c not in inv:
                     return
-                out.append(enc)
-            solutions.append("".join(out)[::-1])
+                out.append(inv[c])
+            enc = "".join(out)
+            if neg:
+                sign = inv.get("-", "-")
+                enc = enc + sign if reverse else sign + enc
+            solutions.append(enc)
             return
         c = order[i]
         for v in values_for(c):
@@ -192,6 +202,4 @@ def _search(examples, query, fixed_identity, node_budget, max_solutions=4):
     if not consistent(pre_table, set(pre_table)):
         return None
     backtrack(0, dict(pre_table), set(pre_used), set(pre_table))
-    if not solutions:
-        return None
-    return solutions[0]  # preference-ordered search: first hit is best guess
+    return solutions[0] if solutions else None

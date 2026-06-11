@@ -1,0 +1,1783 @@
+id,prompt,answer,type
+synth-bits12-0,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010111000100 -> 000000000010
+101001110111 -> 000000000011
+101101110011 -> 000000000011
+100111101001 -> 000000000011
+101111010100 -> 000000000010
+010000000000 -> 000000000000
+101011010111 -> 000000000010
+110100111000 -> 000000000001
+
+Now, determine the output for: 101111101010",000000000011,bits12
+synth-bits12-1,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101111001110 -> 001010000110
+000001001101 -> 010111110110
+111100101111 -> 000000011010
+011011001111 -> 000100100110
+001101011111 -> 000110010100
+100011110101 -> 010011100001
+101011010001 -> 110010100101
+110101001010 -> 101001010110
+
+Now, determine the output for: 110011101111",000001100010,bits12
+synth-bits12-2,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+100111100001 -> 000000000011
+110101100100 -> 000000000001
+101100000101 -> 000000000000
+110111010011 -> 000000000011
+101011110100 -> 000000000011
+010101001000 -> 000000000001
+100100000110 -> 000000000000
+111000101000 -> 000000000000
+
+Now, determine the output for: 000010000101",000000000010,bits12
+synth-bits12-3,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101110111001 -> 100110111011
+110101000100 -> 010011010100
+010001010001 -> 000101000101
+101111101011 -> 101110111110
+001001111111 -> 111100100111
+100011000010 -> 001010001100
+000111010101 -> 010100011101
+100110001001 -> 100110011000
+
+Now, determine the output for: 101000101011",101110100010,bits12
+synth-bits12-4,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101111111100 -> 000000000000
+110110100110 -> 001000000000
+101101010001 -> 000100000000
+100110100111 -> 001100000000
+011100111010 -> 001000000000
+010100110011 -> 001100000000
+110011111110 -> 001000000000
+101001010010 -> 001000000000
+
+Now, determine the output for: 100001100010",001000000000,bits12
+synth-bits12-5,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+110010110101 -> 000011001011
+110101110110 -> 000011010111
+101000101100 -> 100010100010
+101001111110 -> 100010100111
+111011110100 -> 000011101111
+101110100000 -> 000010111010
+010110000101 -> 000001011000
+001111100100 -> 000000111110
+
+Now, determine the output for: 011000000011",000001100000,bits12
+synth-bits12-6,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101110000011 -> 000000001110
+110111101111 -> 000000000111
+100111111000 -> 000000000111
+100010011101 -> 000000000010
+111001000000 -> 000000001001
+010011101010 -> 000000000011
+111010000111 -> 000000001010
+100010001001 -> 000000000010
+
+Now, determine the output for: 111000010001",000000001000,bits12
+synth-bits12-7,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+011011001100 -> 101000000000
+000001101001 -> 000000000000
+011011111011 -> 101000000000
+010101000011 -> 010000000000
+011100111111 -> 110000000000
+011011010110 -> 101000000000
+111100001111 -> 110000000000
+011001000101 -> 100000000000
+
+Now, determine the output for: 101000111001",100000000000,bits12
+synth-bits12-8,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111011100011 -> 111101000000
+011111000001 -> 101111000000
+011101111101 -> 101110000000
+100010000101 -> 110001000000
+011100001010 -> 001110000000
+010000100001 -> 101000000000
+010111000000 -> 001011000000
+001111111110 -> 000111000000
+
+Now, determine the output for: 011011010101",101101000000,bits12
+synth-bits12-9,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101001010011 -> 110101100010
+111110100010 -> 001011101000
+110011101100 -> 100010011001
+011100111101 -> 011000010100
+000111100111 -> 000011000111
+110011101110 -> 100010001001
+111001000000 -> 110111111000
+110010100011 -> 101011100001
+
+Now, determine the output for: 011101010111",010101000100,bits12
+synth-bits12-10,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101000101110 -> 010000000001
+111011001110 -> 110100000001
+011011100100 -> 110100000000
+001000011101 -> 010000000000
+100110000001 -> 001100000001
+101011010111 -> 010100000001
+011001001100 -> 110000000000
+011001110100 -> 110000000000
+
+Now, determine the output for: 111011110011",110100000001,bits12
+synth-bits12-11,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010011001010 -> 000000101000
+110010001111 -> 000000111100
+100011000110 -> 000000011000
+101000110011 -> 000011001100
+011000011000 -> 000001100000
+111100110101 -> 000011010100
+101100110010 -> 000011001000
+011010100000 -> 000010000000
+
+Now, determine the output for: 010101000110",000000011000,bits12
+synth-bits12-12,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+001000110000 -> 000110000000
+001100001101 -> 100001101000
+001000100100 -> 000100100000
+001110001100 -> 110001100000
+111111001111 -> 111001111100
+000001111011 -> 001111011000
+010100011001 -> 100011001000
+011101001011 -> 101001011000
+
+Now, determine the output for: 101001111100",001111100100,bits12
+synth-bits12-13,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+100001000110 -> 100001000110
+000010110110 -> 000010110110
+001111010010 -> 001111010010
+010001001011 -> 010001001011
+111001010101 -> 111001010101
+100011100000 -> 100011100000
+000001111000 -> 000001111000
+000011110111 -> 000011110111
+
+Now, determine the output for: 000111010011",000111010011,bits12
+synth-bits12-14,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+001100110111 -> 101110011001
+100100100010 -> 000101001001
+110001001010 -> 010101100010
+001101000111 -> 001110011010
+011111011100 -> 111000111110
+010000001000 -> 010000100000
+110100000111 -> 001111101000
+001001111111 -> 111110010011
+
+Now, determine the output for: 100111011000",110001001110,bits12
+synth-bits12-15,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111010000011 -> 001111101000
+001101100010 -> 001000110110
+000001101110 -> 111000000110
+001111000001 -> 000100111100
+000100010100 -> 010000010001
+000100111011 -> 101100010011
+000000100101 -> 010100000010
+100101111011 -> 101110010111
+
+Now, determine the output for: 111110010010",001011111001,bits12
+synth-bits12-16,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111001101111 -> 000000000000
+111111011101 -> 000000000000
+001101000000 -> 000000000000
+001001010110 -> 000000000000
+010000101101 -> 000000000000
+000100110110 -> 000000000000
+100000011000 -> 000000000000
+011111000010 -> 000000000000
+
+Now, determine the output for: 101011010101",000000000000,bits12
+synth-bits12-17,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111100111000 -> 000000000000
+111001001111 -> 100000000000
+101101111001 -> 000000000000
+010011011011 -> 000000000000
+101001111101 -> 100000000000
+100011011110 -> 100000000000
+010011101111 -> 100000000000
+100111010000 -> 000000000000
+
+Now, determine the output for: 010111100011",000000000000,bits12
+synth-bits12-18,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+001000100011 -> 100010001100
+110001111001 -> 000111100111
+100010000011 -> 001000001110
+101000100010 -> 100010001010
+001000100101 -> 100010010100
+011010100110 -> 101010011001
+010110000111 -> 011000011101
+110000110100 -> 000011010011
+
+Now, determine the output for: 100101000111",010100011110,bits12
+synth-bits12-19,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010100100010 -> 010000000000
+010111111101 -> 111100000000
+011010100010 -> 010000000000
+001011101110 -> 110100000000
+101100011101 -> 001100000000
+101010101110 -> 010100000000
+001110010111 -> 001000000000
+111011000001 -> 100000000000
+
+Now, determine the output for: 100100101110",010100000000,bits12
+synth-bits12-20,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+100011110010 -> 000000100010
+010000000001 -> 000000010000
+110000001110 -> 000000110000
+101010110010 -> 000000101010
+010010111100 -> 000000010010
+110000111000 -> 000000110000
+111101100111 -> 000000111100
+010110110110 -> 000000010110
+
+Now, determine the output for: 110011110101",000000110010,bits12
+synth-bits12-21,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+011111011010 -> 100000000000
+010101111011 -> 100000000000
+011000011110 -> 100000000000
+101101110010 -> 000000000001
+001110001111 -> 000000000000
+110011000000 -> 100000000001
+111000110100 -> 100000000001
+011100101100 -> 100000000000
+
+Now, determine the output for: 111011001010",100000000001,bits12
+synth-bits12-22,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010011011101 -> 011101010000
+101100011010 -> 011010100000
+100110001110 -> 001110100000
+111000010111 -> 010111110000
+101010011000 -> 011000100000
+000001100001 -> 100001000000
+010100010111 -> 010111010000
+000011000111 -> 000111000000
+
+Now, determine the output for: 100100110010",110010100000,bits12
+synth-bits12-23,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010001011110 -> 101111001000
+001101101100 -> 110110000110
+101101000110 -> 100011010110
+111001011100 -> 101110011100
+101001111011 -> 111101110100
+110010010000 -> 001000011001
+110100101001 -> 010100111010
+100111101011 -> 110101110011
+
+Now, determine the output for: 011011011110",101111001101,bits12
+synth-bits12-24,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+011000101101 -> 011000101101
+011010111001 -> 011010111001
+000000110000 -> 000000110000
+100000001111 -> 100000001111
+110111010110 -> 110111010110
+101110001101 -> 101110001101
+100100100111 -> 100100100111
+001010110111 -> 001010110111
+
+Now, determine the output for: 011000001111",011000001111,bits12
+synth-bits12-25,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+000010101011 -> 110001110000
+001001011100 -> 010011111101
+001101011111 -> 011010000101
+111111010111 -> 001011101001
+101111100001 -> 011111001010
+010010011000 -> 001100001111
+000011101110 -> 110111110010
+001100101011 -> 110010000100
+
+Now, determine the output for: 011110011110",011000100111,bits12
+synth-bits12-26,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111001100001 -> 000000000000
+101111100111 -> 110000000000
+001101010101 -> 100000000000
+111000011101 -> 100000000000
+001000010110 -> 110000000000
+010100011110 -> 110000000000
+010101101111 -> 110000000000
+100010101001 -> 000000000000
+
+Now, determine the output for: 100101101001",000000000000,bits12
+synth-bits12-27,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+101101100001 -> 110000110110
+011101011010 -> 101101001110
+101110111010 -> 011101010111
+001010111100 -> 011110000101
+100111011101 -> 101110110011
+110001001100 -> 100110011000
+101111000001 -> 100000110111
+010111100011 -> 110001101011
+
+Now, determine the output for: 110001101011",110101111000,bits12
+synth-bits12-28,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+111101010001 -> 010001111101
+011110111010 -> 111010011110
+010101111010 -> 111010010101
+011110000110 -> 000110011110
+111100001111 -> 001111111100
+000111111110 -> 111110000111
+000110101111 -> 101111000110
+100000111010 -> 111010100000
+
+Now, determine the output for: 111101111010",111010111101,bits12
+synth-bits12-29,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+010011111000 -> 000000000000
+010011111001 -> 000000000000
+001000111110 -> 000000000000
+011110110101 -> 000000000000
+001000110011 -> 000000000000
+111001011001 -> 000000000000
+000010100100 -> 000000000000
+101110010000 -> 000000000000
+
+Now, determine the output for: 110110001000",000000000000,bits12
+synth-bits12-30,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+000111100111 -> 011100011100
+011001010111 -> 011101100100
+101100001010 -> 101010110000
+010001011001 -> 100101000100
+110010101100 -> 110011001000
+001001011001 -> 100100100100
+001100000000 -> 000000110000
+000101101110 -> 111000010100
+
+Now, determine the output for: 100111100001",000110011100,bits12
+synth-bits12-31,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+100011111100 -> 001000111000
+100010010111 -> 001000100000
+010011111001 -> 000100111000
+100100111000 -> 001001001000
+010100100010 -> 000101001000
+101011001110 -> 001010110000
+110010010011 -> 001100100000
+000000101101 -> 000000001000
+
+Now, determine the output for: 110100001110",001101000000,bits12
+synth-bits12-32,"In Alice's Wonderland, a secret bit manipulation rule transforms 12-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+001101000001 -> 100101111101
+001010110011 -> 101010011001
+001010111011 -> 101010001001
+011000101100 -> 001110100111
+101000011010 -> 101111001010
+100010001000 -> 111011101110
+011000001010 -> 001111101011
+101010111101 -> 101010000100
+
+Now, determine the output for: 111000011010",001111001010,bits12
+synth-bits16-33,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0010110100011100 -> 0010110100000000
+1101101101101111 -> 1101101101100000
+1110011010011011 -> 1110011010000000
+0101011111111011 -> 0101011111100000
+0101011001010100 -> 0101011001000000
+1000011100110011 -> 1000011100100000
+0111011000011100 -> 0111011000000000
+1000111001011100 -> 1000111001000000
+
+Now, determine the output for: 0110000111001111",0110000111000000,bits16
+synth-bits16-34,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0100000110001010 -> 0000110000000000
+1010100100000011 -> 0100100000000000
+0010100111111100 -> 0100111000000000
+0001000100001100 -> 1000100000000000
+0110100100100010 -> 0100100000000000
+0111000010011010 -> 1000010000000000
+0111110101101001 -> 1110101000000000
+1110001100111011 -> 0001100000000000
+
+Now, determine the output for: 1000110001100100",0110001000000000,bits16
+synth-bits16-35,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0001101010101101 -> 0000110000000000
+0100011011101010 -> 0010001000000000
+1111110110111111 -> 0111111000000000
+0110000011001101 -> 0011000000000000
+1110001111010101 -> 0111000000000000
+1011000100000111 -> 0101100000000000
+1110000000001000 -> 0111000000000000
+1001000101111010 -> 0100100000000000
+
+Now, determine the output for: 1011000101000000",0101100000000000,bits16
+synth-bits16-36,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0100001101101000 -> 1000011010000000
+1100111111000111 -> 1001111110000001
+0011111111010010 -> 0111111110000000
+1011101000000011 -> 0111010000000001
+0011111001001000 -> 0111110010000000
+0010100110101101 -> 0101001100000000
+1101010011100001 -> 1010100110000001
+0000010110011110 -> 0000101100000000
+
+Now, determine the output for: 1101000010011111",1010000100000001,bits16
+synth-bits16-37,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1011011100110000 -> 1101110000000000
+1000000111011100 -> 0000010000000000
+1000010011111000 -> 0001000000000000
+0110000100011100 -> 1000010000000000
+0110001000111010 -> 1000100000000000
+0001011000110010 -> 0101100000000000
+1001011100100110 -> 0101110000000000
+0010010111111011 -> 1001010000000000
+
+Now, determine the output for: 1111101110010001",1110110000000000,bits16
+synth-bits16-38,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1110111011010100 -> 0000000000000111
+0100010011110110 -> 0000000000000010
+1000110011110110 -> 0000000000000100
+1111110000111101 -> 0000000000000111
+1001011100000010 -> 0000000000000100
+0111001101100111 -> 0000000000000011
+0110111010000001 -> 0000000000000011
+0010101101000110 -> 0000000000000001
+
+Now, determine the output for: 0011010001000111",0000000000000001,bits16
+synth-bits16-39,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1110011101000011 -> 0000111110011100
+0111011110000010 -> 0000100111011110
+1011001110100111 -> 1001111011001110
+0000001110100110 -> 1001100000001110
+1000100001010110 -> 0101101000100000
+1011111000111010 -> 1110101011111000
+1111011000000101 -> 0001011111011000
+1111000101001000 -> 0010001111000100
+
+Now, determine the output for: 0110000111100100",1001000110000110,bits16
+synth-bits16-40,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1010100111101111 -> 0011110000000000
+1001110000100000 -> 0000000000000000
+0100101011000101 -> 0001010000000000
+0110011100110000 -> 0100000000000000
+0000001100000101 -> 0001010000000000
+0111011001001001 -> 0010010000000000
+0110101111101001 -> 0010010000000000
+0101100111010001 -> 0100010000000000
+
+Now, determine the output for: 0101110110011111",0111110000000000,bits16
+synth-bits16-41,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1011111010111111 -> 0000000110000000
+0010110111001100 -> 0000000000000000
+0100010101110101 -> 0000000010000000
+0000101010000110 -> 0000000100000000
+0001001011100111 -> 0000000110000000
+0011100000100010 -> 0000000100000000
+0100010111001001 -> 0000000010000000
+0001111101011001 -> 0000000010000000
+
+Now, determine the output for: 0010100010110101",0000000010000000,bits16
+synth-bits16-42,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1101101110011100 -> 0000000000001011
+1000110010100110 -> 0000000000001100
+0000100000111000 -> 0000000000001000
+1000000001010010 -> 0000000000000000
+1000001001001110 -> 0000000000000010
+0010001000001111 -> 0000000000000010
+1110110010110100 -> 0000000000001100
+1101100001110110 -> 0000000000001000
+
+Now, determine the output for: 1010001110000100",0000000000000011,bits16
+synth-bits16-43,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1010010000101100 -> 0100001011001010
+0000100100010010 -> 1001000100100000
+1101011101101011 -> 0111011010111101
+0011011100011111 -> 0111000111110011
+0011100111010111 -> 1001110101110011
+0111000100000001 -> 0001000000010111
+1110110100111001 -> 1101001110011110
+0000010001101001 -> 0100011010010000
+
+Now, determine the output for: 0011010000001101",0100000011010011,bits16
+synth-bits16-44,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1100101100010101 -> 0100000000000101
+0011101111011111 -> 1100000000110111
+0010111010001101 -> 0100000000100011
+0001001000011100 -> 0000000000000111
+0001011001001000 -> 0000000000010010
+0000110000000111 -> 1100000000000001
+1110010100000011 -> 1100000000000000
+1110011011011101 -> 0100000000110111
+
+Now, determine the output for: 1011010100011110",1000000000000111,bits16
+synth-bits16-45,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0001101011000001 -> 1100000100011010
+0110100010110100 -> 1011010001101000
+0110000010010110 -> 1001011001100000
+1100011001000100 -> 0100010011000110
+0001111100001110 -> 0000111000011111
+0111100011010101 -> 1101010101111000
+1000100101000001 -> 0100000110001001
+1111010010110001 -> 1011000111110100
+
+Now, determine the output for: 0000110010001110",1000111000001100,bits16
+synth-bits16-46,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1101011110001001 -> 0000000000000000
+1110011010001100 -> 0000000000000000
+1100010011111101 -> 0000000000000000
+0111001111011010 -> 0000000000000001
+1000101011001111 -> 0000000000000001
+1000110011110010 -> 0000000000000001
+1110000010010100 -> 0000000000000000
+1100001100100100 -> 0000000000000000
+
+Now, determine the output for: 0111001100110001",0000000000000000,bits16
+synth-bits16-47,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1100011011100110 -> 0011011100110110
+1100101001001011 -> 0101001001011110
+0011000100001010 -> 1000100001010001
+0001111111011100 -> 1111111011100000
+0000001010100101 -> 0001010100101000
+0111001101000100 -> 1001101000100011
+1001000000010100 -> 1000000010100100
+1011101001101000 -> 1101001101000101
+
+Now, determine the output for: 1011111001100110",1111001100110101,bits16
+synth-bits16-48,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0100110001100010 -> 1100010010011000
+0101000111000011 -> 1000011010100011
+0110110010001100 -> 0001100011011001
+0011011001001110 -> 1001110001101100
+0010000010011110 -> 0011110001000001
+1100100100010000 -> 0010000110010010
+0110101010111001 -> 0111001011010101
+1110101101110111 -> 1110111111010110
+
+Now, determine the output for: 1111111110101000",0101000111111111,bits16
+synth-bits16-49,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0111011010010010 -> 1001011011010000
+1011000010011000 -> 1111011001110000
+1011010110110001 -> 1010010011100000
+0100101011011000 -> 0101001001110000
+1111110000000110 -> 0011111110010000
+0010101010111101 -> 0101010000100000
+0111011000110111 -> 1001110010000000
+1010100100010010 -> 0110111011010000
+
+Now, determine the output for: 0110000001011010",1111101001010000,bits16
+synth-bits16-50,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0010100100111111 -> 0000000101001001
+1011001001100101 -> 0000010110010011
+1101110101111011 -> 0000011011101011
+0011001001010000 -> 0000000110010010
+0111101011110111 -> 0000001111010111
+0011110101010010 -> 0000000111101010
+0011100001011111 -> 0000000111000010
+0111110011000110 -> 0000001111100110
+
+Now, determine the output for: 0101110110000010",0000001011101100,bits16
+synth-bits16-51,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0001000001010010 -> 0000000000000000
+0111010100000101 -> 0000000000000000
+1100100111010011 -> 0000000000000000
+0011110000100000 -> 0000000000000000
+0111011000000011 -> 0000000000000000
+0001010101000001 -> 0000000000000000
+0010011001001010 -> 0000000000000000
+0100010101011100 -> 0000000000000000
+
+Now, determine the output for: 0101010100010111",0000000000000000,bits16
+synth-bits16-52,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1100110110110001 -> 0000011100110110
+1000111101000001 -> 0000011000111101
+1001111100100111 -> 0001111001111100
+0001111111011001 -> 0010010001111111
+1000101101110110 -> 0001101000101101
+0111011001001100 -> 0011000111011001
+1100000111101010 -> 0010101100000111
+0001101001011110 -> 0011100001101001
+
+Now, determine the output for: 0100000111100001",0000010100000111,bits16
+synth-bits16-53,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0101111000010010 -> 1001001011110000
+0000010110011000 -> 1100000000101100
+1100000011100111 -> 0011111000000111
+0111100010100010 -> 0001001111000101
+0011011011110101 -> 1010100110110111
+0010011011000010 -> 0001000100110110
+1101001101001011 -> 0101111010011010
+1010111111010011 -> 1001110101111110
+
+Now, determine the output for: 0111110001011101",1110101111100010,bits16
+synth-bits16-54,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0011000110101010 -> 0001101010100000
+0001100111100010 -> 0001111000100000
+1001000101110100 -> 0001011101000000
+0110000101100100 -> 0001011001000000
+1010110000100101 -> 0000001001010000
+0101001101110100 -> 0011011101000000
+0010101111001100 -> 0011110011000000
+1000001101011101 -> 0011010111010000
+
+Now, determine the output for: 1101000110110011",0001101100110000,bits16
+synth-bits16-55,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1110111001001010 -> 0000000010100000
+0101110010001011 -> 0000000010110000
+1100011100110001 -> 0000001100010000
+0111110000001010 -> 0000000010100000
+1110010111011010 -> 0000000110100000
+1000101011101101 -> 0000001011010000
+0111111100100011 -> 0000001000110000
+1100001011000000 -> 0000000000000000
+
+Now, determine the output for: 0011000101110110",0000001101100000,bits16
+synth-bits16-56,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1111010110011111 -> 0000000000000011
+0110000001100011 -> 0000000000000011
+1110011010100111 -> 0000000000000011
+1101110110101001 -> 0000000000000001
+1000110000001110 -> 0000000000000010
+1100110011101101 -> 0000000000000001
+1011100100100000 -> 0000000000000000
+0100000011011110 -> 0000000000000010
+
+Now, determine the output for: 1011110010011100",0000000000000000,bits16
+synth-bits16-57,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1000001000111100 -> 0000000001111000
+1001100001110011 -> 0000000001100110
+0000100111010010 -> 0000000000100100
+1110111110100011 -> 0000000001000110
+0110111011001010 -> 0000000000010100
+0010110010111110 -> 0000000001111100
+0100101001111110 -> 0000000001111100
+1100001110011110 -> 0000000000111100
+
+Now, determine the output for: 1101001110000111",0000000000001110,bits16
+synth-bits16-58,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1100110000000001 -> 0000000000000000
+1011001000100011 -> 0100000000000000
+0110001100111100 -> 0000000000000000
+1111001010110010 -> 0100000000000000
+0001111110110011 -> 0100000000000000
+1000010101001011 -> 0100000000000000
+1111110100111000 -> 0000000000000000
+0100101110101000 -> 0000000000000000
+
+Now, determine the output for: 1001100100001110",0100000000000000,bits16
+synth-bits16-59,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1110110100100000 -> 0000001000000000
+0010001110011011 -> 0000000000000000
+1010010001110001 -> 0000001000000000
+1001000111010100 -> 0000001000000000
+0111000110001100 -> 0000000000000000
+1000110110000010 -> 0000001000000000
+1011101000110101 -> 0000001000000000
+0110111010110100 -> 0000000000000000
+
+Now, determine the output for: 0101010111111110",0000000000000000,bits16
+synth-bits16-60,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+1001111100100111 -> 1100111110010011
+1001110110110100 -> 0100111011011010
+1100010111010011 -> 1110001011101001
+1111100111011100 -> 0111110011101110
+0111001111110101 -> 1011100111111010
+1000010111010100 -> 0100001011101010
+0000111010111001 -> 1000011101011100
+1010000010101101 -> 1101000001010110
+
+Now, determine the output for: 1011000000101011",1101100000010101,bits16
+synth-bits16-61,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0100010110011010 -> 0000000000001000
+0011111100100101 -> 0000000000000111
+0001100111101110 -> 0000000000000011
+1110111001110111 -> 0000000000011101
+0100011001111111 -> 0000000000001000
+0011010010000110 -> 0000000000000110
+1010100011011100 -> 0000000000010101
+0001101001111100 -> 0000000000000011
+
+Now, determine the output for: 1100100110011111",0000000000011001,bits16
+synth-bits16-62,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0011000011011101 -> 0000000000000000
+0010011010010000 -> 0000000000000000
+0010010101010100 -> 0000000000000000
+0101000010111001 -> 0000000001000000
+1011111110000000 -> 0000000010000000
+1010100111111101 -> 0000000010000000
+0001110010101110 -> 0000000000000000
+1001100110000000 -> 0000000010000000
+
+Now, determine the output for: 1001101010100101",0000000010000000,bits16
+synth-bits16-63,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0101000000010100 -> 0001010000000101
+0110000111100110 -> 1001100001111001
+1110011101100000 -> 0011100111011000
+0000000011110011 -> 1100000000111100
+0000111001101011 -> 1100001110011010
+1001000001101101 -> 0110010000011011
+0010001001110101 -> 0100100010011101
+1011010100000011 -> 1110110101000000
+
+Now, determine the output for: 1011011011010111",1110110110110101,bits16
+synth-bits16-64,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0001000010100010 -> 0000001010001000
+1011001100100111 -> 0000110010011110
+1000001000010110 -> 0000100001011010
+1001001111101110 -> 0000111110111010
+1010100100001111 -> 0000010000111110
+0011011111101010 -> 0000111110101000
+0101010000001001 -> 0000000000100101
+0001101101011010 -> 0000110101101000
+
+Now, determine the output for: 0111100000101111",0000000010111101,bits16
+synth-bits16-65,"In Alice's Wonderland, a secret bit manipulation rule transforms 16-bit binary numbers. The transformation involves operations like bit shifts, rotations, XOR, AND, OR, NOT, and possibly majority or choice functions.
+
+Here are some examples of input -> output:
+0100010110011011 -> 0000000000000001
+1101100111001101 -> 0000000000000001
+1110101110100100 -> 0000000000000000
+0101111010010000 -> 0000000000000000
+0111001111000010 -> 0000000000000000
+1011101000101101 -> 0000000000000001
+0010111110100110 -> 0000000000000000
+0001000101001011 -> 0000000000000001
+
+Now, determine the output for: 1111011001100010",0000000000000000,bits16
+synth-velocity-66,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.37s, distance = 17.02 m
+For t = 2.28s, distance = 16.37 m
+For t = 3.04s, distance = 21.83 m
+For t = 3.92s, distance = 28.15 m
+For t = 4.39s, distance = 31.52 m
+Now, determine the falling distance for t = 2.83s given d = g*t.",20.32,velocity
+synth-velocity-67,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.46s, distance = 37.04 m
+For t = 4.53s, distance = 114.93 m
+For t = 2.56s, distance = 64.95 m
+For t = 4.92s, distance = 124.82 m
+For t = 3.7s, distance = 93.87 m
+Now, determine the falling distance for t = 1.03s given d = g*t.",26.13,velocity
+synth-velocity-68,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.07s, distance = 7.87 m
+For t = 4.18s, distance = 15.88 m
+For t = 1.57s, distance = 5.97 m
+For t = 1.77s, distance = 6.73 m
+For t = 2.1s, distance = 7.98 m
+Now, determine the falling distance for t = 1.94s given d = g*t.",7.37,velocity
+synth-velocity-69,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.94s, distance = 80.77 m
+For t = 3.61s, distance = 59.02 m
+For t = 2.56s, distance = 41.86 m
+For t = 4.43s, distance = 72.43 m
+For t = 3.36s, distance = 54.94 m
+Now, determine the falling distance for t = 4.36s given d = g*t.",71.29,velocity
+synth-velocity-70,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.01s, distance = 40.62 m
+For t = 4.15s, distance = 42.04 m
+For t = 4.54s, distance = 45.99 m
+For t = 3.83s, distance = 38.80 m
+For t = 3.03s, distance = 30.69 m
+Now, determine the falling distance for t = 4.94s given d = g*t.",50.04,velocity
+synth-velocity-71,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.17s, distance = 25.04 m
+For t = 3.6s, distance = 41.54 m
+For t = 1.46s, distance = 16.85 m
+For t = 1.61s, distance = 18.58 m
+For t = 3.98s, distance = 45.93 m
+Now, determine the falling distance for t = 1.96s given d = g*t.",22.62,velocity
+synth-velocity-72,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 3.93s, distance = 56.08 m
+For t = 3.92s, distance = 55.94 m
+For t = 4.47s, distance = 63.79 m
+For t = 1.28s, distance = 18.27 m
+For t = 1.81s, distance = 25.83 m
+Now, determine the falling distance for t = 1.77s given d = g*t.",25.26,velocity
+synth-velocity-73,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 3.98s, distance = 53.65 m
+For t = 4.21s, distance = 56.75 m
+For t = 2.1s, distance = 28.31 m
+For t = 2.92s, distance = 39.36 m
+For t = 3.73s, distance = 50.28 m
+Now, determine the falling distance for t = 1.31s given d = g*t.",17.66,velocity
+synth-velocity-74,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.25s, distance = 46.62 m
+For t = 4.25s, distance = 88.06 m
+For t = 2.31s, distance = 47.86 m
+For t = 1.49s, distance = 30.87 m
+For t = 2.53s, distance = 52.42 m
+Now, determine the falling distance for t = 3.3s given d = g*t.",68.38,velocity
+synth-velocity-75,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 3.77s, distance = 86.22 m
+For t = 4.32s, distance = 98.80 m
+For t = 3.42s, distance = 78.22 m
+For t = 2.65s, distance = 60.61 m
+For t = 3.76s, distance = 85.99 m
+Now, determine the falling distance for t = 2.43s given d = g*t.",55.57,velocity
+synth-velocity-76,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.26s, distance = 8.04 m
+For t = 4.7s, distance = 29.99 m
+For t = 2.48s, distance = 15.82 m
+For t = 1.69s, distance = 10.78 m
+For t = 3.94s, distance = 25.14 m
+Now, determine the falling distance for t = 4.07s given d = g*t.",25.97,velocity
+synth-velocity-77,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.93s, distance = 51.36 m
+For t = 4.76s, distance = 83.44 m
+For t = 2.51s, distance = 44.00 m
+For t = 2.95s, distance = 51.71 m
+For t = 1.6s, distance = 28.05 m
+Now, determine the falling distance for t = 4.75s given d = g*t.",83.27,velocity
+synth-velocity-78,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.21s, distance = 10.58 m
+For t = 1.76s, distance = 15.38 m
+For t = 4.78s, distance = 41.78 m
+For t = 3.99s, distance = 34.87 m
+For t = 4.09s, distance = 35.75 m
+Now, determine the falling distance for t = 3.71s given d = g*t.",32.43,velocity
+synth-velocity-79,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.14s, distance = 58.81 m
+For t = 1.43s, distance = 39.30 m
+For t = 4.87s, distance = 133.83 m
+For t = 1.49s, distance = 40.95 m
+For t = 1.16s, distance = 31.88 m
+Now, determine the falling distance for t = 3.96s given d = g*t.",108.82,velocity
+synth-velocity-80,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 3.94s, distance = 34.91 m
+For t = 4.01s, distance = 35.53 m
+For t = 2.09s, distance = 18.52 m
+For t = 1.55s, distance = 13.73 m
+For t = 3.7s, distance = 32.78 m
+Now, determine the falling distance for t = 3.42s given d = g*t.",30.30,velocity
+synth-velocity-81,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 3.22s, distance = 47.72 m
+For t = 3.96s, distance = 58.69 m
+For t = 2.5s, distance = 37.05 m
+For t = 4.96s, distance = 73.51 m
+For t = 3.44s, distance = 50.98 m
+Now, determine the falling distance for t = 1.4s given d = g*t.",20.75,velocity
+synth-velocity-82,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.67s, distance = 48.60 m
+For t = 3.41s, distance = 99.23 m
+For t = 3.88s, distance = 112.91 m
+For t = 1.04s, distance = 30.26 m
+For t = 1.8s, distance = 52.38 m
+Now, determine the falling distance for t = 3.66s given d = g*t.",106.51,velocity
+synth-velocity-83,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.68s, distance = 34.37 m
+For t = 4.11s, distance = 84.09 m
+For t = 1.73s, distance = 35.40 m
+For t = 4.32s, distance = 88.39 m
+For t = 3.81s, distance = 77.95 m
+Now, determine the falling distance for t = 3.44s given d = g*t.",70.38,velocity
+synth-velocity-84,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.74s, distance = 54.42 m
+For t = 1.79s, distance = 35.55 m
+For t = 3.67s, distance = 72.89 m
+For t = 4.87s, distance = 96.72 m
+For t = 2.66s, distance = 52.83 m
+Now, determine the falling distance for t = 1.19s given d = g*t.",23.63,velocity
+synth-velocity-85,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.3s, distance = 118.85 m
+For t = 3.0s, distance = 82.92 m
+For t = 2.32s, distance = 64.12 m
+For t = 1.39s, distance = 38.42 m
+For t = 1.4s, distance = 38.70 m
+Now, determine the falling distance for t = 2.12s given d = g*t.",58.60,velocity
+synth-velocity-86,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.62s, distance = 63.62 m
+For t = 3.52s, distance = 48.47 m
+For t = 2.93s, distance = 40.35 m
+For t = 1.15s, distance = 15.84 m
+For t = 1.23s, distance = 16.94 m
+Now, determine the falling distance for t = 1.29s given d = g*t.",17.76,velocity
+synth-velocity-87,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.26s, distance = 19.20 m
+For t = 4.69s, distance = 71.48 m
+For t = 1.15s, distance = 17.53 m
+For t = 4.66s, distance = 71.02 m
+For t = 3.87s, distance = 58.98 m
+Now, determine the falling distance for t = 2.98s given d = g*t.",45.42,velocity
+synth-velocity-88,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.07s, distance = 8.59 m
+For t = 2.8s, distance = 5.91 m
+For t = 3.34s, distance = 7.05 m
+For t = 3.09s, distance = 6.52 m
+For t = 4.13s, distance = 8.71 m
+Now, determine the falling distance for t = 3.93s given d = g*t.",8.29,velocity
+synth-velocity-89,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.22s, distance = 25.24 m
+For t = 2.17s, distance = 24.67 m
+For t = 2.48s, distance = 28.20 m
+For t = 1.8s, distance = 20.47 m
+For t = 1.06s, distance = 12.05 m
+Now, determine the falling distance for t = 1.3s given d = g*t.",14.78,velocity
+synth-velocity-90,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.69s, distance = 67.86 m
+For t = 1.02s, distance = 14.76 m
+For t = 1.88s, distance = 27.20 m
+For t = 1.03s, distance = 14.90 m
+For t = 1.66s, distance = 24.02 m
+Now, determine the falling distance for t = 1.76s given d = g*t.",25.47,velocity
+synth-velocity-91,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.97s, distance = 15.41 m
+For t = 1.87s, distance = 5.80 m
+For t = 3.1s, distance = 9.61 m
+For t = 2.51s, distance = 7.78 m
+For t = 3.08s, distance = 9.55 m
+Now, determine the falling distance for t = 3.43s given d = g*t.",10.63,velocity
+synth-velocity-92,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.89s, distance = 22.28 m
+For t = 4.96s, distance = 58.48 m
+For t = 3.63s, distance = 42.80 m
+For t = 3.08s, distance = 36.31 m
+For t = 1.63s, distance = 19.22 m
+Now, determine the falling distance for t = 2.47s given d = g*t.",29.12,velocity
+synth-velocity-93,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.89s, distance = 16.39 m
+For t = 1.44s, distance = 8.16 m
+For t = 1.25s, distance = 7.09 m
+For t = 1.99s, distance = 11.28 m
+For t = 3.49s, distance = 19.79 m
+Now, determine the falling distance for t = 4.96s given d = g*t.",28.12,velocity
+synth-velocity-94,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.77s, distance = 75.79 m
+For t = 2.1s, distance = 57.46 m
+For t = 1.91s, distance = 52.26 m
+For t = 4.12s, distance = 112.72 m
+For t = 4.2s, distance = 114.91 m
+Now, determine the falling distance for t = 2.05s given d = g*t.",56.09,velocity
+synth-velocity-95,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.85s, distance = 67.12 m
+For t = 2.22s, distance = 30.72 m
+For t = 2.95s, distance = 40.83 m
+For t = 2.63s, distance = 36.40 m
+For t = 3.66s, distance = 50.65 m
+Now, determine the falling distance for t = 4.03s given d = g*t.",55.78,velocity
+synth-velocity-96,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 2.89s, distance = 52.22 m
+For t = 4.61s, distance = 83.30 m
+For t = 2.67s, distance = 48.25 m
+For t = 3.56s, distance = 64.33 m
+For t = 3.3s, distance = 59.63 m
+Now, determine the falling distance for t = 4.19s given d = g*t.",75.71,velocity
+synth-velocity-97,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 4.18s, distance = 103.20 m
+For t = 1.09s, distance = 26.91 m
+For t = 2.48s, distance = 61.23 m
+For t = 2.32s, distance = 57.28 m
+For t = 2.74s, distance = 67.65 m
+Now, determine the falling distance for t = 2.78s given d = g*t.",68.64,velocity
+synth-velocity-98,"In Alice's Wonderland, the gravitational constant has been secretly changed. Here are some example observations:
+For t = 1.68s, distance = 26.26 m
+For t = 1.94s, distance = 30.32 m
+For t = 3.13s, distance = 48.92 m
+For t = 3.41s, distance = 53.30 m
+For t = 2.71s, distance = 42.36 m
+Now, determine the falling distance for t = 3.5s given d = g*t.",54.71,velocity
+synth-affine_units-99,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+21.73 m becomes 33.59
+46.5 m becomes 61.99
+48.13 m becomes 63.86
+13.01 m becomes 23.59
+45.98 m becomes 61.39
+Now, convert the following measurement: 58.04 m",75.22,affine_units
+synth-affine_units-100,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+7.6 m becomes 16.69
+52.63 m becomes 104.12
+32.02 m becomes 64.10
+8.89 m becomes 19.20
+45.25 m becomes 89.79
+Now, convert the following measurement: 42.96 m",85.34,affine_units
+synth-affine_units-101,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+15.47 m becomes 65.03
+49.69 m becomes 193.08
+51.31 m becomes 199.14
+45.33 m becomes 176.76
+39.82 m becomes 156.14
+Now, convert the following measurement: 26.37 m",105.82,affine_units
+synth-affine_units-102,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+32.93 m becomes 19.18
+20.3 m becomes 11.97
+31.03 m becomes 18.09
+45.76 m becomes 26.50
+16.37 m becomes 9.73
+Now, convert the following measurement: 11.54 m",6.97,affine_units
+synth-affine_units-103,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+59.12 m becomes 246.26
+24.23 m becomes 104.42
+36.77 m becomes 155.40
+5.16 m becomes 26.89
+10.73 m becomes 49.53
+Now, convert the following measurement: 42.45 m",178.49,affine_units
+synth-affine_units-104,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+7.71 m becomes 19.88
+37.55 m becomes 92.12
+45.5 m becomes 111.37
+16.44 m becomes 41.01
+23.14 m becomes 57.23
+Now, convert the following measurement: 27.86 m",68.66,affine_units
+synth-affine_units-105,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+7.91 m becomes 40.24
+54.83 m becomes 265.03
+29.3 m becomes 142.71
+27.35 m becomes 133.37
+28.0 m becomes 136.49
+Now, convert the following measurement: 46.64 m",225.79,affine_units
+synth-affine_units-106,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+14.63 m becomes 79.28
+8.15 m becomes 47.96
+26.9 m becomes 138.59
+12.83 m becomes 70.58
+11.65 m becomes 64.88
+Now, convert the following measurement: 19.5 m",102.82,affine_units
+synth-affine_units-107,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+30.66 m becomes 25.54
+20.55 m becomes 17.58
+48.79 m becomes 39.83
+45.25 m becomes 37.04
+29.18 m becomes 24.38
+Now, convert the following measurement: 25.77 m",21.69,affine_units
+synth-affine_units-108,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+26.74 m becomes 30.37
+24.48 m becomes 27.49
+56.83 m becomes 68.69
+42.59 m becomes 50.55
+14.31 m becomes 14.54
+Now, convert the following measurement: 26.7 m",30.32,affine_units
+synth-affine_units-109,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+9.35 m becomes 32.49
+36.28 m becomes 135.26
+53.39 m becomes 200.55
+41.77 m becomes 156.21
+19.86 m becomes 72.60
+Now, convert the following measurement: 11.09 m",39.13,affine_units
+synth-affine_units-110,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+43.94 m becomes 203.73
+45.54 m becomes 211.20
+44.43 m becomes 206.01
+29.24 m becomes 135.12
+21.92 m becomes 100.96
+Now, convert the following measurement: 40.86 m",189.35,affine_units
+synth-affine_units-111,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+18.36 m becomes 24.39
+53.4 m becomes 54.45
+11.42 m becomes 18.44
+19.58 m becomes 25.44
+57.35 m becomes 57.84
+Now, convert the following measurement: 29.74 m",34.15,affine_units
+synth-affine_units-112,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+53.14 m becomes 190.55
+9.46 m becomes 41.39
+13.48 m becomes 55.11
+54.25 m becomes 194.34
+10.56 m becomes 45.14
+Now, convert the following measurement: 42.66 m",154.76,affine_units
+synth-affine_units-113,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+20.28 m becomes 20.26
+47.85 m becomes 60.61
+20.19 m becomes 20.13
+22.92 m becomes 24.12
+56.64 m becomes 73.47
+Now, convert the following measurement: 11.05 m",6.75,affine_units
+synth-affine_units-114,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+51.77 m becomes 97.98
+49.85 m becomes 94.70
+48.9 m becomes 93.08
+19.69 m becomes 43.18
+51.33 m becomes 97.23
+Now, convert the following measurement: 25.04 m",52.32,affine_units
+synth-affine_units-115,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+45.76 m becomes 50.80
+7.61 m becomes 1.63
+49.48 m becomes 55.59
+21.91 m becomes 20.06
+19.58 m becomes 17.06
+Now, convert the following measurement: 57.6 m",66.06,affine_units
+synth-affine_units-116,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+12.61 m becomes 23.51
+28.63 m becomes 50.69
+10.74 m becomes 20.34
+44.21 m becomes 77.13
+54.62 m becomes 94.79
+Now, convert the following measurement: 37.79 m",66.23,affine_units
+synth-affine_units-117,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+25.14 m becomes 58.10
+49.56 m becomes 106.85
+9.48 m becomes 26.84
+49.09 m becomes 105.91
+44.36 m becomes 96.47
+Now, convert the following measurement: 34.05 m",75.89,affine_units
+synth-affine_units-118,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+9.3 m becomes 27.35
+54.46 m becomes 189.18
+5.4 m becomes 13.37
+44.35 m becomes 152.95
+55.05 m becomes 191.29
+Now, convert the following measurement: 20.05 m",65.87,affine_units
+synth-affine_units-119,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+51.78 m becomes 15.86
+55.89 m becomes 16.84
+45.92 m becomes 14.46
+14.35 m becomes 6.93
+5.7 m becomes 4.87
+Now, convert the following measurement: 42.65 m",13.68,affine_units
+synth-affine_units-120,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+40.88 m becomes 147.46
+53.49 m becomes 190.61
+38.67 m becomes 139.90
+43.58 m becomes 156.70
+58.13 m becomes 206.49
+Now, convert the following measurement: 35.92 m",130.49,affine_units
+synth-affine_units-121,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+19.3 m becomes 94.04
+28.49 m becomes 136.36
+34.96 m becomes 166.16
+30.6 m becomes 146.08
+43.88 m becomes 207.24
+Now, convert the following measurement: 22.48 m",108.68,affine_units
+synth-affine_units-122,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+52.29 m becomes 174.78
+18.63 m becomes 65.45
+34.61 m becomes 117.35
+48.07 m becomes 161.07
+58.88 m becomes 196.18
+Now, convert the following measurement: 13.93 m",50.18,affine_units
+synth-affine_units-123,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+58.67 m becomes 67.04
+16.21 m becomes 25.52
+5.57 m becomes 15.12
+23.97 m becomes 33.11
+35.83 m becomes 44.71
+Now, convert the following measurement: 40.57 m",49.34,affine_units
+synth-affine_units-124,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+35.13 m becomes 155.99
+44.26 m becomes 197.59
+54.87 m becomes 245.93
+56.23 m becomes 252.13
+32.2 m becomes 142.64
+Now, convert the following measurement: 13.99 m",59.67,affine_units
+synth-affine_units-125,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+52.42 m becomes 132.44
+22.56 m becomes 53.52
+53.04 m becomes 134.08
+36.47 m becomes 90.28
+42.39 m becomes 105.93
+Now, convert the following measurement: 28.77 m",69.93,affine_units
+synth-affine_units-126,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+59.41 m becomes 112.43
+39.08 m becomes 72.95
+8.17 m becomes 12.93
+15.51 m becomes 27.19
+47.4 m becomes 89.11
+Now, convert the following measurement: 20.35 m",36.58,affine_units
+synth-affine_units-127,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+11.98 m becomes 15.02
+44.81 m becomes 69.53
+14.28 m becomes 18.84
+25.04 m becomes 36.71
+57.01 m becomes 89.79
+Now, convert the following measurement: 57.45 m",90.52,affine_units
+synth-affine_units-128,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+10.46 m becomes 7.75
+6.21 m becomes 1.98
+34.88 m becomes 40.90
+42.54 m becomes 51.30
+27.84 m becomes 31.35
+Now, convert the following measurement: 41.85 m",50.37,affine_units
+synth-affine_units-129,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+33.68 m becomes 155.77
+52.95 m becomes 247.75
+34.36 m becomes 159.01
+11.22 m becomes 48.56
+28.14 m becomes 129.32
+Now, convert the following measurement: 32.54 m",150.33,affine_units
+synth-affine_units-130,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+39.38 m becomes 18.91
+29.84 m becomes 15.38
+10.91 m becomes 8.38
+19.6 m becomes 11.59
+49.3 m becomes 22.58
+Now, convert the following measurement: 57.82 m",25.73,affine_units
+synth-affine_units-131,"In Alice's Wonderland, a secret unit conversion is applied to measurements. For example:
+31.96 m becomes 29.17
+12.27 m becomes 5.78
+58.4 m becomes 60.57
+53.84 m becomes 55.16
+17.95 m becomes 12.53
+Now, convert the following measurement: 35.0 m",32.78,affine_units
+synth-caesar-132,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+eqklwjagmk ugdgjxmd fwsj -> mysterious colorful near
+lzjgmyz tggc akdsfv -> through book island
+umjagmk naddsyw ujqklsd udwnwj jwsvk -> curious village crystal clever reads
+datjsjq vjsygf tjayzl kwujwl -> library dragon bright secret
+ygdvwf fwsj hjafuwkk ojalwk -> golden near princess writes
+Now, decrypt the following text: tjayzl egmkw ljwskmjw",bright mouse treasure,caesar
+synth-caesar-133,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+wxuwoh guhdpv euljkw qhdu -> turtle dreams bright near
+lvodqg pluuru qhdu pds wrzhu -> island mirror near map tower
+oleudub ehbrqg wrzhu -> library beyond tower
+dqflhqw fubvwdo fdw elug -> ancient crystal cat bird
+vfkrro prxvh vwxglhv -> school mouse studies
+Now, decrypt the following text: pluuru vhhv sulqfhvv",mirror sees princess,caesar
+synth-caesar-134,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+cmfuhx gymmuay xiil qlcnym xule -> island message door writes dark
+cguachym zilymn ufcwy -> imagines forest alice
+ziffiqm iwyuh qcmy ehcabn wumnfy -> follows ocean wise knight castle
+xlyugm wlsmnuf nyuwbyl -> dreams crystal teacher
+ziohx giohnuch jlchwymm uliohx -> found mountain princess around
+Now, decrypt the following text: koyyh qunwbym jlchwymm",queen watches princess,caesar
+synth-caesar-135,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+iaoowca pqnpha oaao ykhknbqh wjyeajp -> message turtle sees colorful ancient
+ej gau wjyeajp iwceywh oaao -> in key ancient magical sees
+seoa wjyeajp ydwoao -> wise ancient chases
+ejoeza xaukjz bkqjz -> inside beyond found
+opnwjca oaynap ckhzaj -> strange secret golden
+Now, decrypt the following text: eiwcejao ywopha pnawoqna",imagines castle treasure,caesar
+synth-caesar-136,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+pdfbo qsjodftt esbhpo -> ocean princess dragon
+dmfwfs ofbs dsztubm -> clever near crystal
+ljoh ebsl qsjodftt -> king dark princess
+ijeefo bcpwf jotjef esfbnt jnbhjoft -> hidden above inside dreams imagines
+lojhiu dibtft jotjef pdfbo -> knight chases inside ocean
+Now, decrypt the following text: dbu npvoubjo njssps tusbohf",cat mountain mirror strange,caesar
+synth-caesar-137,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+nxcjjg ymzvhn hdmmjm -> school dreams mirror
+qdggvbz ojrzm ocmjpbc nxcjjg -> village tower through school
+hdmmjm ymvbji nopydzn hjpiovdi -> mirror dragon studies mountain
+vmjpiy qvggzt xcvnzn -> around valley chases
+nzxmzo hdmmjm hvbdxvg -> secret mirror magical
+Now, decrypt the following text: qvggzt hznnvbz ocz",valley message the,caesar
+synth-caesar-138,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+hpmefo gpmmpxt sfbet nbhjdbm -> golden follows reads magical
+voefs upxfs qvaamf lojhiu npvoubjo -> under tower puzzle knight mountain
+tfft wbmmfz dbu npvoubjo xpoefsmboe -> sees valley cat mountain wonderland
+tuvejft ijeefo ufbdifs -> studies hidden teacher
+dvsjpvt ebsl nztufsjpvt gpsftu hpmefo -> curious dark mysterious forest golden
+Now, decrypt the following text: dpmpsgvm dbtumf qvaamf",colorful castle puzzle,caesar
+synth-caesar-139,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+nqkazp mdagzp pdqmye ymb yageq -> beyond around dreams map mouse
+radqef mdagzp bgllxq dqmpe pdmie -> forest around puzzle reads draws
+hmxxqk yageq bduzoqee qjbxadqe -> valley mouse princess explores
+pdqmye mdagzp yagzfmuz iueq fqmotqd -> dreams around mountain wise teacher
+pmdw faiqd xundmdk ftq paad -> dark tower library the door
+Now, decrypt the following text: efdmzsq uzeupq omhq",strange inside cave,caesar
+synth-caesar-140,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+wkz kbyexn rsnnox dokmrob zkvkmo -> map around hidden teacher palace
+dro zbsxmocc lsbn -> the princess bird
+drbyeqr exnob cdenoxd nbkqyx cdbkxqo -> through under student dragon strange
+lsbn gbsdoc exnob dokmrob -> bird writes under teacher
+uxsqrd vslbkbi dro boknc cdbkxqo -> knight library the reads strange
+Now, decrypt the following text: sxcsno zkvkmo usxq wicdobsyec",inside palace king mysterious,caesar
+synth-caesar-141,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+dbwf gpsftu gpmmpxt dmfwfs -> cave forest follows clever
+dbwf wbmmfz qsjodftt dsztubm -> cave valley princess crystal
+ibuufs npvtf dibtft nfttbhf -> hatter mouse chases message
+nbhjdbm esbhpo tjmwfs tfft -> magical dragon silver sees
+hbsefo mjcsbsz cfzpoe uvsumf -> garden library beyond turtle
+Now, decrypt the following text: tjmwfs qpujpo uif",silver potion the,caesar
+synth-caesar-142,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+yxcrxw cnjlqna fjclqnb xlnjw -> potion teacher watches ocean
+jwlrnwc majfb mrblxenab -> ancient draws discovers
+oxdwm ejuunh rwbrmn xlnjw ajkkrc -> found valley inside ocean rabbit
+qrmmnw ejuunh cxfna -> hidden valley tower
+lanjcnb bcxah jkxen lqjbnb farcnb -> creates story above chases writes
+Now, decrypt the following text: lahbcju vnbbjpn frbn",crystal message wise,caesar
+synth-caesar-143,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+pawydan znwckj ywopha atlhknao swpydao -> teacher dragon castle explores watches
+ywp iwl ynuopwh lkpekj znwso -> cat map crystal potion draws
+iwceywh hexnwnu iaoowca oaynap ykhknbqh -> magical library message secret colorful
+eiwcejao rehhwca lqvvha znawio nawzo -> imagines village puzzle dreams reads
+iaoowca bkhhkso lkpekj yharan iennkn -> message follows potion clever mirror
+Now, decrypt the following text: ykhknbqh ynuopwh xkkg",colorful crystal book,caesar
+synth-caesar-144,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+pibbmz kzmibma ycmmv -> hatter creates queen
+jzqopb jmgwvl tqjzizg bzmiaczm kzgabit -> bright beyond library treasure crystal
+pibbmz jzqopb izwcvl nwcvl jmgwvl -> hatter bright around found beyond
+ivkqmvb dqttiom smg ycmmv -> ancient village key queen
+uioqkit kzmibma bpm -> magical creates the
+Now, decrypt the following text: xwbqwv sqvo bzmiaczm jzqopb",potion king treasure bright,caesar
+synth-caesar-145,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+qhekdt ijeho rhywxj ijktudj shuqjui -> around story bright student creates
+sebehvkb xqjjuh auo ycqwydui -> colorful hatter key imagines
+medtuhbqdt fhydsuii rhywxj -> wonderland princess bright
+ijktudj shuqjui ijhqdwu -> student creates strange
+shoijqb kdtuh cekiu mqjsxui ruoedt -> crystal under mouse watches beyond
+Now, decrypt the following text: sxqiui tqha thuqci",chases dark dreams,caesar
+synth-caesar-146,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+ikqjpwej oaynap ikqoa -> mountain secret mouse
+opqzajp zeoykrano iwl -> student discovers map
+ywp lqvvha opnwjca -> cat puzzle strange
+sevwnz opqzajp lqvvha -> wizard student puzzle
+pksan qjzan znwso wnkqjz -> tower under draws around
+Now, decrypt the following text: mqaaj sevwnz pksan ykhknbqh",queen wizard tower colorful,caesar
+synth-caesar-147,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+gdun lvodqg dqflhqw rfhdq -> dark island ancient ocean
+zlcdug iroorzv jdughq sdodfh kdwwhu -> wizard follows garden palace hatter
+vwxghqw wkh vwrub fkdvhv lqvlgh -> student the story chases inside
+fdw durxqg pdjlfdo fkdvhv -> cat around magical chases
+xqghu nlqj klgghq zrqghuodqg -> under king hidden wonderland
+Now, decrypt the following text: vwxghqw prxqwdlq gudjrq",student mountain dragon,caesar
+synth-caesar-148,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+xbllu bukly zljyla ohaaly -> queen under secret hatter
+dvuklyshuk zabkplz spiyhyf jyfzahs aylhzbyl -> wonderland studies library crystal treasure
+lewsvylz ipyk kpzjvclyz -> explores bird discovers
+aoyvbno jslcly bukly -> through clever under
+tfzalypvbz jylhalz jha rlf -> mysterious creates cat key
+Now, decrypt the following text: ivvr khyr kyhnvu nhyklu",book dark dragon garden,caesar
+synth-caesar-149,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+ivvr kyhnvu puzpkl -> book dragon inside
+nvsklu wvapvu tpyyvy jylhalz hujplua -> golden potion mirror creates ancient
+ylhkz iypnoa ivvr chsslf -> reads bright book valley
+abyasl rupnoa mvssvdz dvuklyshuk -> turtle knight follows wonderland
+jylhalz thw ivvr -> creates map book
+Now, decrypt the following text: thw pthnpulz pu zjovvs",map imagines in school,caesar
+synth-caesar-150,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+ewvlmztivl qvaqlm tqjzizg bpm -> wonderland inside library the
+oizlmv aqtdmz kzgabit -> garden silver crystal
+wkmiv eibkpma xitikm -> ocean watches palace
+eqhizl xwbqwv kiabtm ijwdm -> wizard potion castle above
+jmgwvl bzmiaczm kidm -> beyond treasure cave
+Now, decrypt the following text: ktmdmz akpwwt uwcvbiqv",clever school mountain,caesar
+synth-caesar-151,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+kvvy dhajolz khyr rpun whshjl -> door watches dark king palace
+jslcly zljyla tfzalypvbz ohaaly -> clever secret mysterious hatter
+jhzasl ilfvuk zabkplz jbypvbz -> castle beyond studies curious
+aoyvbno nvsklu rupnoa -> through golden knight
+johzlz iypnoa aylhzbyl kylhtz -> chases bright treasure dreams
+Now, decrypt the following text: kyhdz thnpjhs pu",draws magical in,caesar
+synth-caesar-152,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+tlkaboixka sfiixdb axoh -> wonderland village dark
+lzbxk mlqflk qbxzebo jxm pbzobq -> ocean potion teacher map secret
+dliabk oxyyfq pfisbo rkabo qroqib -> golden rabbit silver under turtle
+ifyoxov zlilocri kbxo zxq pbzobq -> library colorful near cat secret
+tfwxoa xkzfbkq qeolrde -> wizard ancient through
+Now, decrypt the following text: pqoxkdb zxq qbxzebo",strange cat teacher,caesar
+synth-caesar-153,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+ykky rohxgxe xkgjy mgxjkt -> sees library reads garden
+xkgjy uikgt suayk yorbkx joyiubkxy -> reads ocean mouse silver discovers
+yzuxe ixkgzky suayk -> story creates mouse
+vxotikyy ykixkz jxkgsy hkeutj -> princess secret dreams beyond
+coyk jxgmut nojjkt ixkgzky -> wise dragon hidden creates
+Now, decrypt the following text: yzxgtmk gtioktz ingyky sgmoigr",strange ancient chases magical,caesar
+synth-caesar-154,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+glewiw jsviwx qmvvsv -> chases forest mirror
+jsviwx mrwmhi fsso tepegi amwi -> forest inside book palace wise
+evsyrh fvmklx asrhivperh gewxpi -> around bright wonderland castle
+mwperh oic xli kevhir gpiziv -> island key the garden clever
+oic zeppic tvmrgiww -> key valley princess
+Now, decrypt the following text: wiiw qcwxivmsyw uyiir",sees mysterious queen,caesar
+synth-caesar-155,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+vwxglhv nhb lpdjlqhv jroghq -> studies key imagines golden
+euljkw kdwwhu xqghu -> bright hatter under
+fohyhu ehbrqg pbvwhulrxv -> clever beyond mysterious
+fuhdwhv vfkrro grru -> creates school door
+klgghq prxvh elug nlqj qhdu -> hidden mouse bird king near
+Now, decrypt the following text: dqflhqw fdvwoh zulwhv",ancient castle writes,caesar
+synth-caesar-156,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+tuvefou ufbdifs bodjfou npvoubjo -> student teacher ancient mountain
+gpmmpxt voefs esfbnt xjabse -> follows under dreams wizard
+dbu xjabse wbmmfz -> cat wizard valley
+wbmmfz dsztubm tdippm esbxt dbtumf -> valley crystal school draws castle
+pdfbo csjhiu tusbohf esbhpo -> ocean bright strange dragon
+Now, decrypt the following text: xjtf dmfwfs dbwf",wise clever cave,caesar
+synth-caesar-157,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+wifilzof wupy qlcnym -> colorful cave writes
+xiil wupy ziffiqm qunwbym chmcxy -> door cave follows watches inside
+uhwcyhn jlchwymm mnils -> ancient princess story
+vlcabn nyuwbyl bcxxyh -> bright teacher hidden
+myym zilymn luvvcn jlchwymm -> sees forest rabbit princess
+Now, decrypt the following text: myym mnluhay bunnyl",sees strange hatter,caesar
+synth-caesar-158,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+hqjajw bnxj btsijwqfsi mfyyjw -> clever wise wonderland hatter
+nxqfsi xhmttq ns qngwfwd anqqflj -> island school in library village
+pnsl nrflnsjx hmfxjx vzjjs -> king imagines chases queen
+hmfxjx afqqjd vzjjs inxhtajwx -> chases valley queen discovers
+vzjjs ifwp jcuqtwjx iwfbx lfwijs -> queen dark explores draws garden
+Now, decrypt the following text: pnsl xjhwjy hwjfyjx",king secret creates,caesar
+synth-caesar-159,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+rwgqcjsfg kwnofr qoh vohhsf gwzjsf -> discovers wizard cat hatter silver
+rfokg fsorg awffcf rfsoag wb -> draws reads mirror dreams in
+vwrrsb cqsob ysm gqvccz -> hidden ocean key school
+qifwcig qczcftiz bsof qojs qfsohsg -> curious colorful near cave creates
+pccy waouwbsg ybwuvh awffcf qfsohsg -> book imagines knight mirror creates
+Now, decrypt the following text: cqsob uczrsb ozwqs kohqvsg",ocean golden alice watches,caesar
+synth-caesar-160,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+enqdrs ptddm ahqc czqj -> forest queen bird dark
+rdbqds enqdrs adxnmc cqzvr snvdq -> secret forest beyond draws tower
+bzrskd snvdq lhqqnq adxnmc -> castle tower mirror beyond
+rhkudq sdzbgdq lntmszhm uzkkdx -> silver teacher mountain valley
+hmrhcd ptddm lntmszhm rbgnnk sdzbgdq -> inside queen mountain school teacher
+Now, decrypt the following text: hmrhcd oqhmbdrr ozkzbd",inside princess palace,caesar
+synth-caesar-161,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+nfttbhf bcpwf fyqmpsft cfzpoe -> message above explores beyond
+mjcsbsz tuvefou voefs -> library student under
+xjabse qsjodftt sbccju xbudift jnbhjoft -> wizard princess rabbit watches imagines
+mjcsbsz usfbtvsf xjabse -> library treasure wizard
+tusbohf esfbnt njssps -> strange dreams mirror
+Now, decrypt the following text: tuvefou fyqmpsft xpoefsmboe",student explores wonderland,caesar
+synth-caesar-162,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+lxxl dbgz ubkw ebuktkr lvahhe -> sees king bird library school
+makhnza ptmvaxl kxtwl lmnwxgm ztkwxg -> through watches reads student garden
+pkbmxl tkhngw fhnlx ubkw -> writes around mouse bird
+max dbgz jnxxg frlmxkbhnl -> the king queen mysterious
+ubkw yheehpl abwwxg phgwxketgw bglbwx -> bird follows hidden wonderland inside
+Now, decrypt the following text: ztkwxg dbgz kxtwl bg",garden king reads in,caesar
+synth-caesar-163,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+vxotikyy znk vgrgik suayk sgv -> princess the palace mouse map
+vaffrk luxkyz seyzkxouay huuq ot -> puzzle forest mysterious book in
+lurrucy soxxux vuzout -> follows mirror potion
+suayk iaxouay ykixkz vuzout ixkgzky -> mouse curious secret potion creates
+seyzkxouay igyzrk oyrgtj ingyky -> mysterious castle island chases
+Now, decrypt the following text: qtomnz sgv ghubk",knight map above,caesar
+synth-caesar-164,"In Alice's Wonderland, secret encryption rules are used on text. Here are some examples:
+ayqrjc kmsqc zpgefr -> castle mouse bright
+nyjyac uyrafcq qafmmj -> palace watches school
+bmmp glqgbc ylagclr umlbcpjylb kmslrygl -> door inside ancient wonderland mountain
+gqjylb qgjtcp bpcykq -> island silver dreams
+zpgefr npglacqq zmmi fyrrcp -> bright princess book hatter
+Now, decrypt the following text: rfpmsef bpcykq bpyuq",through dreams draws,caesar
+synth-base_numeral-165,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+348 -> PMMS
+168 -> AAM
+263 -> SIO
+14 -> IM
+42 -> LM
+Now, write the number 240 in the Wonderland numeral system.",OLI,base_numeral
+synth-base_numeral-166,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+40 -> XEM
+326 -> JEMX
+272 -> JMPJ
+301 -> JJMX
+67 -> JEJ
+Now, write the number 355 in the Wonderland numeral system.",JPXM,base_numeral
+synth-base_numeral-167,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+163 -> VVRD
+329 -> RDLE
+138 -> VLRD
+366 -> REDV
+240 -> VEDL
+Now, write the number 399 in the Wonderland numeral system.",DLEE,base_numeral
+synth-base_numeral-168,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+352 -> NNNOON
+198 -> RNNOO
+283 -> NONNNN
+102 -> NORNO
+51 -> NRRO
+Now, write the number 130 in the Wonderland numeral system.",NNRNN,base_numeral
+synth-base_numeral-169,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+40 -> AA
+73 -> JQQ
+98 -> NWW
+226 -> PPN
+82 -> JPA
+Now, write the number 270 in the Wonderland numeral system.",AQP,base_numeral
+synth-base_numeral-170,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+162 -> PPLL
+376 -> HQQP
+22 -> XL
+331 -> LHPP
+246 -> PXXP
+Now, write the number 155 in the Wonderland numeral system.",PPPQ,base_numeral
+synth-base_numeral-171,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+15 -> GB
+373 -> NEEG
+306 -> NNZZ
+356 -> NEZZ
+129 -> ZBBE
+Now, write the number 367 in the Wonderland numeral system.",NEGN,base_numeral
+synth-base_numeral-172,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+51 -> BY
+87 -> WOH
+116 -> WBI
+13 -> WA
+274 -> IOO
+Now, write the number 214 in the Wonderland numeral system.",YOB,base_numeral
+synth-base_numeral-173,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+281 -> AIAAIS
+46 -> ASIA
+295 -> AIASSA
+53 -> ASSS
+259 -> AIIASA
+Now, write the number 394 in the Wonderland numeral system.",AASASA,base_numeral
+synth-base_numeral-174,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+86 -> RSSRB
+355 -> RRRSRR
+15 -> RBS
+70 -> BRBR
+333 -> RRSRSS
+Now, write the number 334 in the Wonderland numeral system.",RRSRSR,base_numeral
+synth-base_numeral-175,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+357 -> IIITZT
+27 -> ITTT
+254 -> ITTITZ
+223 -> ZZTZI
+174 -> ZTIIT
+Now, write the number 28 in the Wonderland numeral system.",ITTI,base_numeral
+synth-base_numeral-176,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+329 -> FLL
+162 -> EGE
+316 -> GZG
+384 -> NMM
+240 -> XNM
+Now, write the number 190 in the Wonderland numeral system.",EZN,base_numeral
+synth-base_numeral-177,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+279 -> BRYP
+207 -> RIRB
+22 -> PB
+122 -> PPB
+250 -> BYYY
+Now, write the number 90 in the Wonderland numeral system.",IIY,base_numeral
+synth-base_numeral-178,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+288 -> PPX
+102 -> KPH
+221 -> JJB
+103 -> KPD
+26 -> JQ
+Now, write the number 145 in the Wonderland numeral system.",QQK,base_numeral
+synth-base_numeral-179,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+59 -> MHL
+69 -> MVL
+155 -> HHHZ
+65 -> MVZ
+345 -> MVLZ
+Now, write the number 18 in the Wonderland numeral system.",VV,base_numeral
+synth-base_numeral-180,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+290 -> QUD
+97 -> GUU
+132 -> NPU
+352 -> GTGN
+287 -> QUT
+Now, write the number 92 in the Wonderland numeral system.",GUG,base_numeral
+synth-base_numeral-181,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+297 -> VLS
+254 -> UFX
+181 -> IXL
+262 -> VMX
+246 -> UXX
+Now, write the number 6 in the Wonderland numeral system.",X,base_numeral
+synth-base_numeral-182,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+133 -> AGJ
+111 -> ANW
+389 -> NJWC
+310 -> WAA
+180 -> RCG
+Now, write the number 103 in the Wonderland numeral system.",AJG,base_numeral
+synth-base_numeral-183,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+392 -> GGYGGY
+239 -> YYYGY
+323 -> GVYYYY
+39 -> GGGV
+180 -> YVYVV
+Now, write the number 256 in the Wonderland numeral system.",GVVGGG,base_numeral
+synth-base_numeral-184,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+63 -> HLPP
+61 -> HPHL
+303 -> LPHPHP
+236 -> HHHPH
+344 -> LLPHPH
+Now, write the number 266 in the Wonderland numeral system.",LPPHLH,base_numeral
+synth-base_numeral-185,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+317 -> DJIIJI
+270 -> DJDJJJ
+28 -> DJJD
+190 -> IDJJD
+244 -> DJJJJD
+Now, write the number 240 in the Wonderland numeral system.",IIIIJ,base_numeral
+synth-base_numeral-186,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+108 -> KSJ
+24 -> JJ
+351 -> SVSS
+238 -> UWV
+28 -> UV
+Now, write the number 314 in the Wonderland numeral system.",WKW,base_numeral
+synth-base_numeral-187,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+30 -> YYN
+214 -> YGRV
+234 -> YVYV
+399 -> GNVV
+141 -> YNGY
+Now, write the number 171 in the Wonderland numeral system.",YYVY,base_numeral
+synth-base_numeral-188,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+268 -> UFFZZU
+258 -> UFFUZF
+225 -> ZZUFF
+240 -> ZZZZF
+177 -> ZFUZF
+Now, write the number 275 in the Wonderland numeral system.",UFUFUZ,base_numeral
+synth-base_numeral-189,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+142 -> VGF
+95 -> GAU
+231 -> ABU
+167 -> VBU
+173 -> VQQ
+Now, write the number 5 in the Wonderland numeral system.",Q,base_numeral
+synth-base_numeral-190,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+249 -> EXR
+237 -> RET
+302 -> TQQ
+395 -> QQXM
+224 -> RRX
+Now, write the number 298 in the Wonderland numeral system.",TXR,base_numeral
+synth-base_numeral-191,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+270 -> RPH
+365 -> KWPK
+347 -> KWWH
+174 -> PPU
+35 -> RW
+Now, write the number 348 in the Wonderland numeral system.",KWWR,base_numeral
+synth-base_numeral-192,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+334 -> XCT
+41 -> XC
+305 -> QTC
+359 -> XQR
+134 -> NZT
+Now, write the number 386 in the Wonderland numeral system.",TZN,base_numeral
+synth-base_numeral-193,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+150 -> NNK
+341 -> TNT
+242 -> BKN
+286 -> UBK
+88 -> JBI
+Now, write the number 273 in the Wonderland numeral system.",UNJ,base_numeral
+synth-base_numeral-194,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+218 -> UYF
+172 -> YYU
+129 -> GUY
+329 -> PVL
+185 -> YVY
+Now, write the number 311 in the Wonderland numeral system.",PGY,base_numeral
+synth-base_numeral-195,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+100 -> BJSJB
+42 -> BBSJ
+327 -> BBJJBJ
+234 -> SSSJJ
+212 -> SBSBS
+Now, write the number 136 in the Wonderland numeral system.",BSJJB,base_numeral
+synth-base_numeral-196,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+58 -> PUNN
+130 -> NNPNN
+369 -> NNNPUU
+339 -> NNUNPU
+9 -> NUU
+Now, write the number 252 in the Wonderland numeral system.",NUUNUU,base_numeral
+synth-base_numeral-197,"In Alice's Wonderland, numbers are secretly converted into a different numeral system. Some examples are given below:
+251 -> BXB
+285 -> IBH
+132 -> SMI
+243 -> BVB
+131 -> SMB
+Now, write the number 36 in the Wonderland numeral system.",II,base_numeral
